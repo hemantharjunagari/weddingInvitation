@@ -272,14 +272,115 @@ function initMusicToggle() {
 }
 
 // ----------------------------------------------------
-// 5. English / Telugu Language Toggle
+// 5. English / Telugu Language Toggle & Bilingual Dictionaries
 // ----------------------------------------------------
+let currentAppLang = "en";
+let currentCarouselIndex = 0;
+
+const CAROUSEL_CAPTIONS = {
+  en: [
+    {
+      title: "Exchange of Lagna Patrika",
+      sub: "Bride's parents presenting the auspicious Lagna Patrika to the groom's brother & sister-in-law"
+    },
+    {
+      title: "Exchange of Lagna Patrika",
+      sub: "Groom's brother & sister-in-law presenting the auspicious Lagna Patrika to the bride's parents"
+    },
+    {
+      title: "Blessed Beginnings in Flower Garlands",
+      sub: "Lakshmi Prasanna & Praveen with Lord Ganesha's blessings"
+    },
+    {
+      title: "A Joyful Promise of Forever",
+      sub: "Playful and happy moments with the engagement rings"
+    },
+    {
+      title: "Together in Love & Laughter",
+      sub: "A shared look, a lifetime of companionship"
+    },
+    {
+      title: "The Sacred Rings",
+      sub: "Beautiful henna hands holding the sacred bond of love"
+    },
+    {
+      title: "The Happy Couple",
+      sub: "Chi.La.Sou. A. Lakshmi Prasanna & Chi. P. Praveen"
+    },
+    {
+      title: "Group Photo with Bride's Family",
+      sub: "Joyful celebrations on stage with the bride's loving family"
+    },
+    {
+      title: "Group Photo with Parents of Bride & Groom",
+      sub: "A heartwarming portrait with the parents of both bride and groom"
+    },
+    {
+      title: "Group Photo with Groom's Parents",
+      sub: "Cherished celebrations and blessings with the groom's parents on stage"
+    }
+  ],
+  te: [
+    {
+      title: "లగ్నపత్రిక సమర్పణ",
+      sub: "వరుని అన్న, వదిన గార్లకు లగ్నపత్రిక అందజేస్తున్న వధువు తల్లిదండ్రులు"
+    },
+    {
+      title: "లగ్నపత్రిక సమర్పణ",
+      sub: "వధువు తల్లిదండ్రులకు లగ్నపత్రిక అందజేస్తున్న వరుని అన్న మరియు వదిన గార్లు"
+    },
+    {
+      title: "పూలమాలలతో నూతన జంట",
+      sub: "గణపతి ఆశీస్సులతో ఒక్కటవుతున్న లక్ష్మీ ప్రసన్న & ప్రవీణ్"
+    },
+    {
+      title: "శాశ్వత బంధానికి నాంది",
+      sub: "ఉంగరాలు మార్చుకున్న ఆనందకర వేళ"
+    },
+    {
+      title: "ప్రేమానురాగాల కలయిక",
+      sub: "జీవితాంతం తోడుంటామని ఒకరికొకరు ఇచ్చిన మాట"
+    },
+    {
+      title: "పవిత్ర నిశ్చితార్థ ఉంగరాలు",
+      sub: "మెహందీ చేతులలో ముచ్చటైన ఉంగరాల కానుక"
+    },
+    {
+      title: "నూతన దంపతులు",
+      sub: "చి॥ల॥సౌ॥ ఎ. లక్ష్మీ ప్రసన్న & చి॥ పి. ప్రవీణ్"
+    },
+    {
+      title: "వధువు కుటుంబ సభ్యులతో సమూహ చిత్రం",
+      sub: "వేదికపై వధువు కుటుంబ సభ్యులతో కలిసి ఆనందకర క్షణాలు"
+    },
+    {
+      title: "వధూవరుల తల్లిదండ్రులతో సమూహ చిత్రం",
+      sub: "వధూవరుల ఉభయ తల్లిదండ్రులతో కలిసి తీయించుకున్న ఆత్మీయ చిత్రం"
+    },
+    {
+      title: "వరుని తల్లిదండ్రులతో సమూహ చిత్రం",
+      sub: "వేదికపై వరుని తల్లిదండ్రులతో కలిసి దిగిన అందమైన జ్ఞాపకం"
+    }
+  ]
+};
+
+function updateCarouselCaptionDisplay() {
+  const capTitle = document.getElementById("carousel-caption-title");
+  const capSub = document.getElementById("carousel-caption-sub");
+  const list = CAROUSEL_CAPTIONS[currentAppLang] || CAROUSEL_CAPTIONS.en;
+  if (list && list[currentCarouselIndex]) {
+    if (capTitle) capTitle.textContent = list[currentCarouselIndex].title;
+    if (capSub) capSub.textContent = list[currentCarouselIndex].sub;
+  }
+}
+
 const I18N = {
   en: {
     btnText: "తెలుగు",
     mobileBtnText: "Switch to తెలుగు",
     familyTag: '<i class="fa-solid fa-om text-champagne-600"></i> Arjunagari Family Wedding Invitation',
     greeting: "Smt. Aruna & Sri A. Mohan, APSRTC cordially solicit your gracious presence on the wedding celebrations of their elder daughter",
+    slokaSub: "Seeking divine blessings of Lord Shiva & Goddess Parvati",
     brideTitle: "Chi.La.Sou.",
     brideName: "A. Lakshmi Prasanna",
     brideSub: "(Prasanna Lakshmi), B.E.",
@@ -299,13 +400,72 @@ const I18N = {
     navInvitation: "The Invitation",
     navSchedule: "Ceremonies",
     navVenue: "Venue & Map",
-    navMoments: "Moments"
+    navMoments: "Moments",
+
+    // Invitation Section
+    invBadge: "With Warm Regards",
+    invHeading: "The Wedding Invitation",
+
+    // Schedule Section
+    schBadge: "Auspicious Occasions",
+    schHeading: "Ceremonies & Celebrations",
+    schDesc: "Join us across every cherished moment",
+    ev1Date: "Thursday, 19th November 2026 • 10:00 AM",
+    ev1Title: "Nalugu Ceremony (నలుగు)",
+    ev1Desc: "Traditional auspicious turmeric purification and pre-wedding blessing ritual with family and loved ones.",
+    ev1Loc: "SRL Kalyana Mandapam Premises",
+    ev1Time: "10:00 AM onwards",
+    ev1Dir: "Directions",
+    ev2Date: "Thursday, 19th November 2026 • 7:00 PM Onwards",
+    ev2Badge: "Grand Dinner",
+    ev2Title: "Reception & Dinner (రిసెప్షన్ & విందు)",
+    ev2Desc: "A grand evening celebration to welcome the guests, congratulate the couple, followed by a sumptuous traditional wedding feast.",
+    ev2Loc: "Main Dining & Stage Hall",
+    ev2Feast: "Traditional South Indian Feast",
+    ev2Dir: "Directions",
+    ev3Date: "Friday, 20th November 2026 • Early Morning",
+    ev3Badge: "Sumuhurtham",
+    ev3Title: "Wedding Ceremony (సుముహూర్తం)",
+    ev3Desc: "The sacred marriage ceremony in Subha Lagnam between <strong>4:30 AM – 6:00 AM</strong> (Pushkara Kalam: 5:43 AM – 5:47 AM), tying of the Mangalsutra (Jeelakarra Bellam & Mangalya Dharana), and Saptapadi.",
+    ev3Loc: "Kalyana Mandapam Stage",
+    ev3Time: "4:30 AM to 6:00 AM",
+    ev3Dir: "Directions",
+
+    // Venue Section
+    venBadge: "Destination",
+    venHeading: "Wedding Venue & Map",
+    venType: "Kalyana Mandapam",
+    venName: "SRL Kalyana Mandapam",
+    venAddress: "Tirupati Road, Venkatagiri, Tirupati District, Andhra Pradesh.",
+    venLm1Title: "Location Landmark:",
+    venLm1Desc: "Conveniently located on main Tirupati Road with ample parking for wedding guests.",
+    venLm2Title: "Nearest Railway Stations:",
+    venLm2Desc: "Venkatagiri Railway Station (VKI) is just ~3 km away; Gudur Junction is ~45 km away.",
+    venLm3Title: "Airport Connectivity:",
+    venLm3Desc: "Tirupati Airport (TIR) is approximately 75 km away via State Highway.",
+    venMapBtn: "Open Google Maps",
+    copyBtn: "Copy Address",
+
+    // Moments Section
+    momBadge: "Our Journey",
+    momHeading: "Engagement Moments",
+    momDesc: "Glimpses of love, tradition, and togetherness",
+    momCountPhoto: "Photo",
+    momCountOf: "of",
+
+    // Footer
+    ftNames: "Lakshmi Prasanna & Praveen",
+    ftQuote: '"Two lives, two hearts, joined together in friendship, united forever in love."',
+    ftDate: "19th & 20th November 2026 • Venkatagiri, Andhra Pradesh",
+    ftCompliments: "With Best Compliments From: <strong>Near & Dear</strong>",
+    ftFamily: "Arjunagari Family Wedding Invitation"
   },
   te: {
     btnText: "English",
     mobileBtnText: "Switch to English",
     familyTag: '<i class="fa-solid fa-om text-champagne-600"></i> అర్జునగారి వారి పెండ్లిపిలుపు',
     greeting: "శ్రీమతి అరుణ & శ్రీ అర్జునగారి మోహన్ (APSRTC) గార్ల జ్యేష్ఠ కుమార్తె వివాహ మహోత్సవ ఆహ్వానం",
+    slokaSub: "పార్వతీ పరమేశ్వరుల దివ్య ఆశీస్సులతో...",
     brideTitle: "చి॥ల॥సౌ॥",
     brideName: "ఎ. లక్ష్మీ ప్రసన్న",
     brideSub: "(ప్రసన్న లక్ష్మి) B.E.",
@@ -325,87 +485,185 @@ const I18N = {
     navInvitation: "ఆహ్వాన పత్రిక",
     navSchedule: "శుభకార్యాలు",
     navVenue: "కళ్యాణ వేదిక",
-    navMoments: "మధుర క్షణాలు"
+    navMoments: "మధుర క్షణాలు",
+
+    // Invitation Section
+    invBadge: "శుభ ఆహ్వానం",
+    invHeading: "వివాహ ఆహ్వాన పత్రిక",
+
+    // Schedule Section
+    schBadge: "శుభకార్యాల వివరాలు",
+    schHeading: "వివాహ మహోత్సవ కార్యక్రమాలు",
+    schDesc: "ప్రతి మధుర క్షణంలో పాల్గొని నూతన వధూవరులను ఆశీర్వదించండి",
+    ev1Date: "గురువారం, 19 నవంబర్ 2026 • ఉదయం 10:00 గంటలకు",
+    ev1Title: "నలుగు కార్యక్రమము",
+    ev1Desc: "బంధుమిత్రుల సమక్షంలో సాంప్రదాయబద్ధంగా జరిగే పసుపు కుంకుమల మంగళకర నలుగు వేడుక.",
+    ev1Loc: "ఎస్.ఆర్.ఎల్. కళ్యాణమండప ప్రాంగణం",
+    ev1Time: "ఉదయం 10:00 గంటల నుండి",
+    ev1Dir: "రూట్ మ్యాప్",
+    ev2Date: "గురువారం, 19 నవంబర్ 2026 • సాయంత్రం 7:00 గంటల నుండి",
+    ev2Badge: "స్నేహ విందు",
+    ev2Title: "రిసెప్షన్ & విందు (స్నేహసమ్మేళనం)",
+    ev2Desc: "వధూవరులకు శుభాకాంక్షలు తెలుపుతూ, బంధుమిత్రులతో ఆత్మీయ కలయిక మరియు రుచికరమైన సాంప్రదాయ వివాహ భోజన విందు.",
+    ev2Loc: "డైనింగ్ & స్టేజ్ హాల్",
+    ev2Feast: "రుచికరమైన సాంప్రదాయ విందు భోజనం",
+    ev2Dir: "రూట్ మ్యాప్",
+    ev3Date: "శుక్రవారం, 20 నవంబర్ 2026 • ఉదయాత్పూర్వం",
+    ev3Badge: "సుముహూర్తం",
+    ev3Title: "మాంగల్యధారణ - పాణిగ్రహణ మహోత్సవం",
+    ev3Desc: "శుభ లగ్నమందు <strong>ఉదయాత్పూర్వం 4:30 - 6:00 గంటల మధ్య</strong> (పుష్కరకాలం: 5:43 - 5:47 ని॥ల మధ్య) జీలకర్ర బెల్లం, మాంగల్యధారణ, సప్తపది వేదమంత్రోచ్ఛారణల మధ్య.",
+    ev3Loc: "కళ్యాణమండప వేదిక",
+    ev3Time: "ఉదయం 4:30 నుండి 6:00 గంటల వరకు",
+    ev3Dir: "రూట్ మ్యాప్",
+
+    // Venue Section
+    venBadge: "కళ్యాణ వేదిక",
+    venHeading: "వేదిక & మార్గదర్శిని (మ్యాప్)",
+    venType: "కళ్యాణ మండపము",
+    venName: "ఎస్.ఆర్.ఎల్. కళ్యాణమండపము",
+    venAddress: "తిరుపతి రోడ్, వెంకటగిరి, తిరుపతి జిల్లా, ఆంధ్రప్రదేశ్.",
+    venLm1Title: "ప్రధాన ఆనవాలు:",
+    venLm1Desc: "తిరుపతి ప్రధాన రహదారి పక్కనే సులభంగా చేరుకోగల ప్రదేశం మరియు విశాలమైన పార్కింగ్ సౌకర్యం.",
+    venLm2Title: "సమీప రైల్వే స్టేషన్లు:",
+    venLm2Desc: "వెంకటగిరి రైల్వే స్టేషన్ (VKI) సుమారు 3 కి.మీ; గూడూరు జంక్షన్ సుమారు 45 కి.మీ.",
+    venLm3Title: "విమానాశ్రయం:",
+    venLm3Desc: "తిరుపతి అంతర్జాతీయ విమానాశ్రయం (TIR) స్టేట్ హైవే ద్వారా సుమారు 75 కి.మీ.",
+    venMapBtn: "గూగుల్ మ్యాప్స్ చూడండి",
+    copyBtn: "చిరునామా కాపీ చేయండి",
+
+    // Moments Section
+    momBadge: "మధుర క్షణాలు",
+    momHeading: "నిశ్చితార్థ వేడుక దృశ్యాలు",
+    momDesc: "ప్రేమ, సాంప్రదాయం మరియు కుటుంబ బంధాల అందమైన జ్ఞాపకాలు",
+    momCountPhoto: "ఫోటో",
+    momCountOf: "/",
+
+    // Footer
+    ftNames: "లక్ష్మీ ప్రసన్న & ప్రవీణ్",
+    ftQuote: '"రెండు మనసులు, రెండు జీవితాలు.. ఆలుమగలుగా ఒక్కటైన పవిత్ర బంధం."',
+    ftDate: "19 & 20 నవంబర్ 2026 • వెంకటగిరి, ఆంధ్రప్రదేశ్",
+    ftCompliments: "తమరాకను కోరు: <strong>బంధుమిత్రులు & కుటుంబ సభ్యులు</strong>",
+    ftFamily: "అర్జునగారి వారి పెండ్లిపిలుపు"
   }
 };
+
+function setElText(id, text) {
+  const el = document.getElementById(id);
+  if (el && text !== undefined) el.textContent = text;
+}
+
+function setElHtml(id, html) {
+  const el = document.getElementById(id);
+  if (el && html !== undefined) el.innerHTML = html;
+}
 
 function applyLanguage(lang) {
   const data = I18N[lang];
   if (!data) return;
+  currentAppLang = lang;
 
-  const btnText = document.getElementById("lang-btn-text");
-  const mBtnText = document.getElementById("m-lang-btn-text");
-  if (btnText) btnText.textContent = data.btnText;
-  if (mBtnText) mBtnText.textContent = data.mobileBtnText;
+  setElText("lang-btn-text", data.btnText);
+  setElText("m-lang-btn-text", data.mobileBtnText);
 
-  const familyTag = document.getElementById("hero-family-tag");
-  if (familyTag) familyTag.innerHTML = data.familyTag;
+  setElHtml("hero-family-tag", data.familyTag);
+  setElText("hero-greeting", data.greeting);
+  setElText("hero-sloka-sub", data.slokaSub);
 
-  const greeting = document.getElementById("hero-greeting");
-  if (greeting) greeting.textContent = data.greeting;
+  setElText("hero-bride-title", data.brideTitle);
+  setElText("hero-bride-name", data.brideName);
+  setElText("hero-bride-sub", data.brideSub);
 
-  const brideTitle = document.getElementById("hero-bride-title");
-  if (brideTitle) brideTitle.textContent = data.brideTitle;
+  setElText("hero-weds", data.weds);
 
-  const brideName = document.getElementById("hero-bride-name");
-  if (brideName) brideName.textContent = data.brideName;
+  setElText("hero-groom-title", data.groomTitle);
+  setElText("hero-groom-name", data.groomName);
+  setElText("hero-groom-sub", data.groomSub);
 
-  const brideSub = document.getElementById("hero-bride-sub");
-  if (brideSub) brideSub.textContent = data.brideSub;
+  setElText("hero-date-badge", data.dateBadge);
+  setElText("hero-muhurtham-badge", data.muhurthamBadge);
+  setElText("hero-venue-badge", data.venueBadge);
 
-  const weds = document.getElementById("hero-weds");
-  if (weds) weds.textContent = data.weds;
+  setElText("hero-cal-btn-text", data.calBtn);
+  setElText("lbl-countdown-title", data.countdownTitle);
 
-  const groomTitle = document.getElementById("hero-groom-title");
-  if (groomTitle) groomTitle.textContent = data.groomTitle;
+  setElText("lbl-days", data.lblDays);
+  setElText("lbl-hours", data.lblHours);
+  setElText("lbl-minutes", data.lblMins);
+  setElText("lbl-seconds", data.lblSecs);
 
-  const groomName = document.getElementById("hero-groom-name");
-  if (groomName) groomName.textContent = data.groomName;
+  setElText("nav-invitation", data.navInvitation);
+  setElText("nav-schedule", data.navSchedule);
+  setElText("nav-venue", data.navVenue);
+  setElText("nav-moments", data.navMoments);
 
-  const groomSub = document.getElementById("hero-groom-sub");
-  if (groomSub) groomSub.textContent = data.groomSub;
+  setElText("m-nav-invitation", data.navInvitation);
+  setElText("m-nav-schedule", data.navSchedule);
+  setElText("m-nav-venue", data.navVenue);
+  setElText("m-nav-moments", data.navMoments);
 
-  const dateBadge = document.getElementById("hero-date-badge");
-  if (dateBadge) dateBadge.textContent = data.dateBadge;
+  // Invitation
+  setElText("inv-badge", data.invBadge);
+  setElText("inv-heading", data.invHeading);
 
-  const muhurthamBadge = document.getElementById("hero-muhurtham-badge");
-  if (muhurthamBadge) muhurthamBadge.textContent = data.muhurthamBadge;
+  // Schedule
+  setElText("sch-badge", data.schBadge);
+  setElText("sch-heading", data.schHeading);
+  setElText("sch-desc", data.schDesc);
 
-  const venueBadge = document.getElementById("hero-venue-badge");
-  if (venueBadge) venueBadge.textContent = data.venueBadge;
+  setElText("ev1-date", data.ev1Date);
+  setElText("ev1-title", data.ev1Title);
+  setElText("ev1-desc", data.ev1Desc);
+  setElText("ev1-loc", data.ev1Loc);
+  setElText("ev1-time", data.ev1Time);
+  setElText("ev1-dir", data.ev1Dir);
 
-  const calBtnText = document.getElementById("hero-cal-btn-text");
-  if (calBtnText) calBtnText.textContent = data.calBtn;
+  setElText("ev2-date", data.ev2Date);
+  setElText("ev2-badge", data.ev2Badge);
+  setElText("ev2-title", data.ev2Title);
+  setElText("ev2-desc", data.ev2Desc);
+  setElText("ev2-loc", data.ev2Loc);
+  setElText("ev2-feast", data.ev2Feast);
+  setElText("ev2-dir", data.ev2Dir);
 
-  const cdTitle = document.getElementById("lbl-countdown-title");
-  if (cdTitle) cdTitle.textContent = data.countdownTitle;
+  setElText("ev3-date", data.ev3Date);
+  setElText("ev3-badge", data.ev3Badge);
+  setElText("ev3-title", data.ev3Title);
+  setElHtml("ev3-desc", data.ev3Desc);
+  setElText("ev3-loc", data.ev3Loc);
+  setElText("ev3-time", data.ev3Time);
+  setElText("ev3-dir", data.ev3Dir);
 
-  const lDays = document.getElementById("lbl-days");
-  if (lDays) lDays.textContent = data.lblDays;
-  const lHours = document.getElementById("lbl-hours");
-  if (lHours) lHours.textContent = data.lblHours;
-  const lMins = document.getElementById("lbl-minutes");
-  if (lMins) lMins.textContent = data.lblMins;
-  const lSecs = document.getElementById("lbl-seconds");
-  if (lSecs) lSecs.textContent = data.lblSecs;
+  // Venue
+  setElText("ven-badge", data.venBadge);
+  setElText("ven-heading", data.venHeading);
+  setElText("ven-type", data.venType);
+  setElText("ven-name", data.venName);
+  setElText("ven-address", data.venAddress);
+  setElText("ven-lm1-title", data.venLm1Title);
+  setElText("ven-lm1-desc", data.venLm1Desc);
+  setElText("ven-lm2-title", data.venLm2Title);
+  setElText("ven-lm2-desc", data.venLm2Desc);
+  setElText("ven-lm3-title", data.venLm3Title);
+  setElText("ven-lm3-desc", data.venLm3Desc);
+  setElText("ven-map-btn-text", data.venMapBtn);
+  setElText("copy-text", data.copyBtn);
 
-  const navInv = document.getElementById("nav-invitation");
-  if (navInv) navInv.textContent = data.navInvitation;
-  const navSch = document.getElementById("nav-schedule");
-  if (navSch) navSch.textContent = data.navSchedule;
-  const navVen = document.getElementById("nav-venue");
-  if (navVen) navVen.textContent = data.navVenue;
-  const navMom = document.getElementById("nav-moments");
-  if (navMom) navMom.textContent = data.navMoments;
+  // Moments
+  setElText("mom-badge", data.momBadge);
+  setElText("mom-heading", data.momHeading);
+  setElText("mom-desc", data.momDesc);
+  setElText("mom-count-photo", data.momCountPhoto);
+  setElText("mom-count-of", data.momCountOf);
 
-  const mNavInv = document.getElementById("m-nav-invitation");
-  if (mNavInv) mNavInv.textContent = data.navInvitation;
-  const mNavSch = document.getElementById("m-nav-schedule");
-  if (mNavSch) mNavSch.textContent = data.navSchedule;
-  const mNavVen = document.getElementById("m-nav-venue");
-  if (mNavVen) mNavVen.textContent = data.navVenue;
-  const mNavMom = document.getElementById("m-nav-moments");
-  if (mNavMom) mNavMom.textContent = data.navMoments;
+  // Update carousel caption in new language
+  updateCarouselCaptionDisplay();
+
+  // Footer
+  setElText("ft-names", data.ftNames);
+  setElText("ft-quote", data.ftQuote);
+  setElText("ft-date", data.ftDate);
+  setElHtml("ft-compliments", data.ftCompliments);
+  setElText("ft-family", data.ftFamily);
 
   const enSection = document.getElementById("content-english");
   const teSection = document.getElementById("content-telugu");
@@ -462,7 +720,7 @@ function initCopyAddress() {
       navigator.clipboard.writeText(WEDDING_CONFIG.location).then(() => {
         if (copyText) {
           const original = copyText.textContent;
-          copyText.textContent = "Copied to Clipboard!";
+          copyText.textContent = currentAppLang === "te" ? "కాపీ చేయబడింది!" : "Copied to Clipboard!";
           setTimeout(() => {
             copyText.textContent = original;
           }, 2000);
@@ -508,75 +766,28 @@ function initCarousel() {
   if (!track || dots.length === 0) return;
 
   const totalSlides = dots.length;
-  let currentIndex = 0;
   let autoplayInterval = null;
   let isPlaying = true;
 
-  const CAPTIONS = [
-    {
-      title: "Sacred Blessings with Family & Elders",
-      sub: "Auspicious beginnings with family prayers and rituals"
-    },
-    {
-      title: "Seeking Blessings from Beloved Parents",
-      sub: "Cherished moments of gratitude, joy, and blessings"
-    },
-    {
-      title: "Blessed Beginnings in Flower Garlands",
-      sub: "Lakshmi Prasanna & Praveen with Lord Ganesha's blessings"
-    },
-    {
-      title: "A Joyful Promise of Forever",
-      sub: "Playful and happy moments with the engagement rings"
-    },
-    {
-      title: "Together in Love & Laughter",
-      sub: "A shared look, a lifetime of companionship"
-    },
-    {
-      title: "The Sacred Rings",
-      sub: "Beautiful henna hands holding the sacred bond of love"
-    },
-    {
-      title: "The Happy Couple",
-      sub: "Chi.La.Sou. A. Lakshmi Prasanna & Chi. P. Praveen"
-    },
-    {
-      title: "Family Celebrations on Stage",
-      sub: "Lakshmi Prasanna & Praveen surrounded by loving parents and siblings"
-    },
-    {
-      title: "Together with Beloved Family",
-      sub: "Warm smiles and sweet memories with family elders"
-    },
-    {
-      title: "Cherished Family Gathering",
-      sub: "A heartwarming group portrait of both families celebrating together"
-    }
-  ];
-
   function goToSlide(index) {
     if (index < 0) {
-      currentIndex = totalSlides - 1;
+      currentCarouselIndex = totalSlides - 1;
     } else if (index >= totalSlides) {
-      currentIndex = 0;
+      currentCarouselIndex = 0;
     } else {
-      currentIndex = index;
+      currentCarouselIndex = index;
     }
 
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    track.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
 
     if (currentCounter) {
-      currentCounter.textContent = currentIndex + 1;
+      currentCounter.textContent = currentCarouselIndex + 1;
     }
 
-    const capTitle = document.getElementById("carousel-caption-title");
-    const capSub = document.getElementById("carousel-caption-sub");
-    if (capTitle && CAPTIONS[currentIndex]) capTitle.textContent = CAPTIONS[currentIndex].title;
-    if (capSub && CAPTIONS[currentIndex]) capSub.textContent = CAPTIONS[currentIndex].sub;
+    updateCarouselCaptionDisplay();
 
     dots.forEach((dot, i) => {
-      if (i === currentIndex) {
+      if (i === currentCarouselIndex) {
         dot.className = "carousel-dot w-8 h-2.5 rounded-full bg-champagne-500 transition-all duration-300";
       } else {
         dot.className = "carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300";
@@ -590,7 +801,7 @@ function initCarousel() {
     if (playIcon) playIcon.className = "fa-solid fa-pause";
     if (playText) playText.textContent = "Pause";
     autoplayInterval = setInterval(() => {
-      goToSlide(currentIndex + 1);
+      goToSlide(currentCarouselIndex + 1);
     }, 4500);
   }
 
@@ -606,14 +817,14 @@ function initCarousel() {
 
   if (prevBtn) {
     prevBtn.addEventListener("click", () => {
-      goToSlide(currentIndex - 1);
+      goToSlide(currentCarouselIndex - 1);
       if (isPlaying) startAutoplay();
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener("click", () => {
-      goToSlide(currentIndex + 1);
+      goToSlide(currentCarouselIndex + 1);
       if (isPlaying) startAutoplay();
     });
   }
@@ -649,9 +860,9 @@ function initCarousel() {
     const diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 40) {
       if (diff > 0) {
-        goToSlide(currentIndex + 1);
+        goToSlide(currentCarouselIndex + 1);
       } else {
-        goToSlide(currentIndex - 1);
+        goToSlide(currentCarouselIndex - 1);
       }
       if (isPlaying) startAutoplay();
     }

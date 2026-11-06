@@ -1,0 +1,246 @@
+/* Custom Typography and Animations for Wedding Invitation */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fcfaf6;
+}
+::-webkit-scrollbar-thumb {
+  background: #dcbe87;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c59f58;
+}
+
+/* Elegant gold gradient accents */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #c59f58 0%, #dcbe87 50%, #ab8240 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Pulse animation for music wave when playing */
+@keyframes musicPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.music-playing {
+  animation: musicPulse 2s infinite ease-in-out;
+  border-color: #c59f58 !important;
+  color: #c59f58 !important;
+}
+
+/* Card image subtle zoom */
+.hover\:scale-101:hover {
+  transform: scale(1.015);
+}
+
+/* ====================================================
+   Telugu Typography & Safari Cross-Browser Fixes
+   ==================================================== */
+
+/* Ensure FontAwesome font weights are accurate and protected from font-family overrides */
+.fa-solid, i.fa-solid {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  font-style: normal !important;
+}
+
+.fa-regular, i.fa-regular {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+/* Primary font stack for Telugu text elements specifically */
+.font-telugu,
+html.lang-te #hero-greeting,
+html.lang-te #hero-sloka-sub,
+html.lang-te #hero-bride-name,
+html.lang-te #hero-groom-name,
+html.lang-te #hero-bride-title,
+html.lang-te #hero-groom-title,
+html.lang-te #hero-date-badge,
+html.lang-te #hero-muhurtham-badge,
+html.lang-te #hero-venue-badge,
+html.lang-te #hero-cal-btn-text,
+html.lang-te #lbl-countdown-title,
+html.lang-te #lbl-days,
+html.lang-te #lbl-hours,
+html.lang-te #lbl-minutes,
+html.lang-te #lbl-seconds,
+html.lang-te #nav-invitation,
+html.lang-te #nav-schedule,
+html.lang-te #nav-venue,
+html.lang-te #nav-moments,
+html.lang-te #m-nav-invitation,
+html.lang-te #m-nav-schedule,
+html.lang-te #m-nav-venue,
+html.lang-te #m-nav-moments,
+html.lang-te #inv-badge,
+html.lang-te #inv-heading,
+html.lang-te #sch-badge,
+html.lang-te #sch-heading,
+html.lang-te #sch-desc,
+html.lang-te #ev1-date,
+html.lang-te #ev1-title,
+html.lang-te #ev1-desc,
+html.lang-te #ev1-loc,
+html.lang-te #ev1-time,
+html.lang-te #ev1-dir,
+html.lang-te #ev2-date,
+html.lang-te #ev2-badge,
+html.lang-te #ev2-title,
+html.lang-te #ev2-desc,
+html.lang-te #ev2-loc,
+html.lang-te #ev2-feast,
+html.lang-te #ev2-dir,
+html.lang-te #ev3-date,
+html.lang-te #ev3-badge,
+html.lang-te #ev3-title,
+html.lang-te #ev3-desc,
+html.lang-te #ev3-loc,
+html.lang-te #ev3-time,
+html.lang-te #ev3-dir,
+html.lang-te #ven-badge,
+html.lang-te #ven-heading,
+html.lang-te #ven-type,
+html.lang-te #ven-name,
+html.lang-te #ven-address,
+html.lang-te #ven-lm1-title,
+html.lang-te #ven-lm1-desc,
+html.lang-te #ven-lm2-title,
+html.lang-te #ven-lm2-desc,
+html.lang-te #ven-lm3-title,
+html.lang-te #ven-lm3-desc,
+html.lang-te #ven-map-btn-text,
+html.lang-te #copy-text,
+html.lang-te #mom-badge,
+html.lang-te #mom-heading,
+html.lang-te #mom-desc,
+html.lang-te #carousel-caption-title,
+html.lang-te #carousel-caption-sub,
+html.lang-te #mom-count-photo,
+html.lang-te #mom-count-of,
+html.lang-te #carousel-play-text,
+html.lang-te #ft-names,
+html.lang-te #ft-quote,
+html.lang-te #ft-date,
+html.lang-te #ft-compliments,
+html.lang-te #ft-family {
+  font-family: 'Noto Serif Telugu', 'Kohinoor Telugu', 'Telugu Sangam MN', 'Ramabhadra', 'Suranna', system-ui, -apple-system, sans-serif !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-transform: none !important;
+  font-style: normal !important;
+}
+
+/* Headings line height in Telugu */
+html.lang-te #inv-heading,
+html.lang-te #sch-heading,
+html.lang-te #ven-heading,
+html.lang-te #mom-heading,
+html.lang-te #ev1-title,
+html.lang-te #ev2-title,
+html.lang-te #ev3-title,
+html.lang-te #ft-names {
+  line-height: 1.4 !important;
+}
+
+/* Ensure cursive Alex Brush is never applied to Telugu 'కళ్యాణం' */
+html.lang-te #hero-weds {
+  font-family: 'Noto Serif Telugu', 'Kohinoor Telugu', 'Telugu Sangam MN', serif !important;
+  font-size: 2.25rem !important;
+  line-height: 1.3 !important;
+  letter-spacing: normal !important;
+  font-style: normal !important;
+}
+
+/* Ensure proper line-height for translated hero elements in Telugu */
+html.lang-te #hero-greeting,
+html.lang-te #hero-date-badge,
+html.lang-te #hero-muhurtham-badge,
+html.lang-te #hero-venue-badge {
+  line-height: 1.65 !important;
+}
+
+html.lang-te #hero-bride-name,
+html.lang-te #hero-groom-name {
+  line-height: 1.35 !important;
+}
+
+/* Relaxed line-height for Telugu to accommodate high ascenders (matras) and low descenders (vattulu) */
+#content-telugu {
+  line-height: 1.95;
+}
+
+#content-telugu p,
+#content-telugu div,
+#content-telugu span {
+  line-height: 1.95;
+}
+
+#content-telugu h3,
+#content-telugu h4,
+#content-telugu h5 {
+  line-height: 1.5;
+}
+
+.font-telugu {
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Address container: pin icon alignment with the first line */
+.address-row {
+  display: inline-flex;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 290px;
+}
+
+.address-row .address-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  height: 1.45em;
+  margin-right: 0.35rem;
+  flex-shrink: 0;
+  vertical-align: top;
+}
+
+.address-row .address-icon svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  display: block;
+  fill: currentColor;
+}
+
+.address-row .address-text {
+  flex: 1;
+}

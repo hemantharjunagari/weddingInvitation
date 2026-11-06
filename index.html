@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lakshmi Prasanna & Praveen | Wedding Invitation - Arjunagari Family</title>
+  
+  <!-- Meta description and social tags for WhatsApp / Social sharing -->
+  <meta name="description" content="Arjunagari Family cordially invites you to the wedding celebrations of Chi.La.Sou. A. Lakshmi Prasanna with Chi. P. Praveen on 19th & 20th November 2026 at SRL Kalyana Mandapam, Venkatagiri.">
+  <meta property="og:title" content="Wedding Invitation | Lakshmi Prasanna & Praveen">
+  <meta property="og:description" content="Arjunagari Family cordially invites you with family & friends. Join us on 19th & 20th November 2026 at SRL Kalyana Mandapam, Venkatagiri.">
+  <meta property="og:image" content="./assets/engagement/photo3.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+Telugu:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Ramabhadra&family=Suranna&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blush: {
+              50: '#fdf8f7',
+              100: '#faedea',
+              200: '#f6dbd6',
+              300: '#eebdb4',
+              400: '#e3998c',
+              500: '#d47465',
+            },
+            sage: {
+              50: '#f4f6f4',
+              100: '#e6ebe5',
+              200: '#cedacd',
+              300: '#a7bfa5',
+              400: '#7e9f7b',
+              500: '#5e805b',
+            },
+            champagne: {
+              100: '#fcf8f0',
+              200: '#f6eedc',
+              300: '#ebdcb9',
+              400: '#dcbe87',
+              500: '#c59f58',
+              600: '#ab8240',
+              700: '#8c672d',
+            },
+            maroon: {
+              800: '#6b1724',
+              900: '#4e0d17',
+            },
+            charcoal: '#2c332e',
+            cream: '#fcfaf6'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            display: ['"Playfair Display"', 'serif'],
+            script: ['"Alex Brush"', 'cursive'],
+            sans: ['"Montserrat"', 'sans-serif'],
+            telugu: ['"Noto Serif Telugu"', '"Kohinoor Telugu"', '"Telugu Sangam MN"', '"Ramabhadra"', '"Suranna"', 'system-ui', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./style.css?v=3">
+</head>
+<body class="bg-cream text-charcoal font-sans antialiased overflow-x-hidden selection:bg-blush-200 selection:text-charcoal">
+
+  <!-- Floating Falling Petals Canvas -->
+  <canvas id="petals-canvas" class="fixed inset-0 pointer-events-none z-30"></canvas>
+
+  <!-- Background Music Floating Controller -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+    <div id="music-tooltip" class="bg-charcoal/85 text-white text-xs px-3 py-1.5 rounded-full shadow-lg backdrop-blur-sm transition-opacity duration-300 opacity-90">
+      <span class="flex items-center gap-1.5"><i class="fa-solid fa-volume-high text-champagne-400"></i> Tap for melody</span>
+    </div>
+    <button id="music-toggle" aria-label="Toggle background music" class="w-12 h-12 rounded-full bg-white/90 border border-champagne-300 shadow-xl flex items-center justify-center text-charcoal hover:bg-blush-100 hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-md">
+      <i id="music-icon" class="fa-solid fa-music text-champagne-500 text-lg"></i>
+    </button>
+  </div>
+
+  <!-- Top Auspicious Banner -->
+  <div class="bg-gradient-to-r from-amber-50 via-champagne-100 to-amber-50 border-b border-champagne-300/60 py-2 px-4 text-center">
+    <div class="max-w-4xl mx-auto flex items-center justify-between text-[11px] sm:text-xs text-charcoal/80 font-serif tracking-widest uppercase">
+      <span class="hidden sm:inline-block text-champagne-700">॥ శ్రీరస్తు ॥</span>
+      <div class="flex items-center justify-center gap-4 mx-auto sm:mx-0 font-medium">
+        <span class="text-champagne-700 font-semibold">Srirasthu</span>
+        <span class="text-champagne-400">•</span>
+        <span class="text-champagne-700 font-semibold">Subhamasthu</span>
+        <span class="text-champagne-400">•</span>
+        <span class="text-champagne-700 font-semibold">Kalyanamasthu</span>
+      </div>
+      <span class="hidden sm:inline-block text-champagne-700">॥ కళ్యాణమస్తు ॥</span>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header id="navbar" class="sticky top-0 left-0 right-0 z-40 transition-all duration-300 py-3.5 px-6 md:px-12 bg-cream/90 backdrop-blur-md border-b border-champagne-200/60">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#hero" class="flex flex-col">
+        <span class="font-script text-2xl md:text-3xl text-charcoal hover:text-champagne-600 transition-colors">
+          Lakshmi Prasanna & Praveen
+        </span>
+        <span class="text-[9px] tracking-[0.25em] uppercase text-champagne-700 font-semibold -mt-1">
+          Arjunagari Family Invitation
+        </span>
+      </a>
+      
+      <nav class="hidden md:flex items-center space-x-7 text-xs font-medium uppercase tracking-widest text-charcoal/80">
+        <a href="#invitation" id="nav-invitation" class="hover:text-champagne-600 transition-colors">The Invitation</a>
+        <a href="#schedule" id="nav-schedule" class="hover:text-champagne-600 transition-colors">Ceremonies</a>
+        <a href="#venue" id="nav-venue" class="hover:text-champagne-600 transition-colors">Venue & Map</a>
+        <a href="#moments" id="nav-moments" class="hover:text-champagne-600 transition-colors">Moments</a>
+      </nav>
+
+      <!-- Language & Mobile Menu Button -->
+      <div class="flex items-center gap-3">
+        <button id="lang-toggle-btn" class="text-xs px-3 py-1.5 rounded-full border border-champagne-400 text-champagne-700 hover:bg-champagne-100 font-medium transition" title="Switch English / Telugu">
+          <i class="fa-solid fa-language mr-1"></i> <span id="lang-btn-text">తెలుగు</span>
+        </button>
+
+        <button id="menu-btn" class="md:hidden text-charcoal text-xl p-2 focus:outline-none" aria-label="Open navigation menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-cream/95 backdrop-blur-lg border-b border-champagne-200 py-4 px-6 mt-3 space-y-3 text-center text-sm uppercase tracking-wider font-medium">
+      <a href="#invitation" id="m-nav-invitation" class="block py-2 hover:text-champagne-600">The Invitation</a>
+      <a href="#schedule" id="m-nav-schedule" class="block py-2 hover:text-champagne-600">Ceremonies & Muhurtham</a>
+      <a href="#venue" id="m-nav-venue" class="block py-2 hover:text-champagne-600">Venue & Directions</a>
+      <a href="#moments" id="m-nav-moments" class="block py-2 hover:text-champagne-600">Moments</a>
+      <div class="pt-2 border-t border-champagne-200">
+        <button id="lang-toggle-btn-mobile" class="w-full py-2 rounded-full border border-champagne-400 text-champagne-700 bg-white font-medium text-xs flex items-center justify-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-language"></i> <span id="m-lang-btn-text">Switch to తెలుగు</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center pt-16 pb-20 px-6 bg-gradient-to-b from-blush-50 via-cream to-sage-50 text-center overflow-hidden">
+    <!-- Decorative Corner Ornaments -->
+    <div class="absolute top-8 left-4 md:left-12 opacity-25 pointer-events-none select-none text-champagne-600">
+      <svg class="w-24 h-24 md:w-40 md:h-40" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M10,10 Q50,0 70,30 Q40,40 10,10 Z M15,15 Q30,60 10,80 Q0,50 15,15 Z" />
+      </svg>
+    </div>
+    <div class="absolute bottom-8 right-4 md:right-12 opacity-25 pointer-events-none select-none text-champagne-600 rotate-180">
+      <svg class="w-24 h-24 md:w-40 md:h-40" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M10,10 Q50,0 70,30 Q40,40 10,10 Z M15,15 Q30,60 10,80 Q0,50 15,15 Z" />
+      </svg>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+      
+      <!-- Sacred Sloka -->
+      <div class="mb-6 p-4 rounded-2xl bg-white/60 border border-champagne-200 backdrop-blur-sm max-w-xl mx-auto shadow-sm">
+        <p class="font-telugu not-italic text-sm md:text-base text-charcoal/85 leading-[2] text-center">
+          "వాగర్థావివ సంపృక్తౌ వాగర్థ ప్రతిపత్తయే ।<br class="hidden sm:inline">
+          జగతః పితరౌ వందే పార్వతీ పరమేశ్వరౌ ॥"
+        </p>
+        <p id="hero-sloka-sub" class="text-[10px] md:text-xs text-charcoal/50 uppercase tracking-widest mt-1 text-center font-sans">
+          Seeking divine blessings of Lord Shiva & Goddess Parvati
+        </p>
+      </div>
+
+      <!-- Host Family Tagline -->
+      <div id="hero-family-tag" class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-champagne-100/80 border border-champagne-300 text-champagne-800 text-xs md:text-sm font-sans tracking-[0.25em] uppercase mb-4 shadow-sm">
+        <i class="fa-solid fa-om text-champagne-600"></i> Arjunagari Family Wedding Invitation
+      </div>
+
+      <p id="hero-greeting" class="font-serif italic text-base sm:text-lg text-charcoal/75 max-w-2xl mx-auto mb-2">
+        Smt. Aruna & Sri A. Mohan, APSRTC cordially solicit your gracious presence on the wedding celebrations of their elder daughter
+      </p>
+
+      <!-- Couple Names -->
+      <div class="my-3">
+        <h1 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-charcoal tracking-wide">
+          <span id="hero-bride-title" class="block text-2xl sm:text-4xl text-charcoal/70 font-serif font-light mb-1">Chi.La.Sou.</span>
+          <span id="hero-bride-name">A. Lakshmi Prasanna</span>
+          <span id="hero-bride-sub" class="block text-base sm:text-xl font-serif text-charcoal/60 mt-0.5">(Prasanna Lakshmi), B.E.</span>
+        </h1>
+
+        <div class="my-4 flex items-center justify-center gap-4">
+          <span class="h-0.5 w-12 bg-champagne-300"></span>
+          <span id="hero-weds" class="font-script text-champagne-600 text-4xl sm:text-5xl font-normal">weds</span>
+          <span class="h-0.5 w-12 bg-champagne-300"></span>
+        </div>
+
+        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-charcoal tracking-wide">
+          <span id="hero-groom-title" class="block text-2xl sm:text-4xl text-charcoal/70 font-serif font-light mb-1">Chi.</span>
+          <span id="hero-groom-name">P. Praveen</span>
+          <span id="hero-groom-sub" class="block text-base sm:text-xl font-serif text-charcoal/60 mt-0.5">B.Tech.</span>
+        </h2>
+      </div>
+
+      <!-- Date, Muhurtham & Location Pill -->
+      <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8 my-6 text-charcoal/90 text-sm md:text-base border-y border-champagne-300/70 py-4 px-6 bg-white/40 rounded-xl backdrop-blur-sm">
+        <div class="flex items-center gap-2">
+          <i class="fa-regular fa-calendar-check text-champagne-600 text-lg"></i>
+          <span id="hero-date-badge" class="font-semibold tracking-wider uppercase font-sans text-xs md:text-sm">20th November 2026, Friday</span>
+        </div>
+        <span class="hidden md:inline-block text-champagne-400">•</span>
+        <div class="flex items-center gap-2">
+          <i class="fa-regular fa-clock text-champagne-600"></i>
+          <span id="hero-muhurtham-badge" class="font-medium text-xs md:text-sm">Muhurtham: 4:30 AM – 6:00 AM</span>
+        </div>
+        <span class="hidden md:inline-block text-champagne-400">•</span>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-location-dot text-champagne-600"></i>
+          <span id="hero-venue-badge" class="font-medium text-xs md:text-sm">SRL Kalyana Mandapam, Venkatagiri</span>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="flex items-center justify-center mt-2 w-full sm:w-auto">
+        <button id="add-to-cal-btn" class="w-full sm:w-auto px-9 py-3.5 rounded-full bg-champagne-500 hover:bg-champagne-600 text-white font-sans text-xs uppercase tracking-widest font-semibold shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2.5">
+          <i class="fa-regular fa-calendar-plus text-sm"></i> <span id="hero-cal-btn-text">Add to Calendar</span>
+        </button>
+      </div>
+
+      <!-- Live Countdown Card -->
+      <div class="mt-12 w-full max-w-2xl bg-white/80 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-champagne-200 shadow-sm">
+        <div class="flex items-center justify-center gap-2 mb-4">
+          <i class="fa-solid fa-hourglass-half text-champagne-600 text-sm"></i>
+          <p id="lbl-countdown-title" class="font-serif italic text-charcoal/80 text-sm md:text-base tracking-wide">
+            Counting down every auspicious moment to the Sumuhurtham
+          </p>
+        </div>
+        <div class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
+          <div class="bg-blush-50/90 rounded-xl p-3 border border-blush-200">
+            <span id="days" class="block font-display text-2xl sm:text-4xl font-semibold text-charcoal">00</span>
+            <span id="lbl-days" class="text-[10px] sm:text-xs font-sans uppercase tracking-widest text-charcoal/60">Days</span>
+          </div>
+          <div class="bg-blush-50/90 rounded-xl p-3 border border-blush-200">
+            <span id="hours" class="block font-display text-2xl sm:text-4xl font-semibold text-charcoal">00</span>
+            <span id="lbl-hours" class="text-[10px] sm:text-xs font-sans uppercase tracking-widest text-charcoal/60">Hours</span>
+          </div>
+          <div class="bg-blush-50/90 rounded-xl p-3 border border-blush-200">
+            <span id="minutes" class="block font-display text-2xl sm:text-4xl font-semibold text-charcoal">00</span>
+            <span id="lbl-minutes" class="text-[10px] sm:text-xs font-sans uppercase tracking-widest text-charcoal/60">Mins</span>
+          </div>
+          <div class="bg-blush-50/90 rounded-xl p-3 border border-blush-200">
+            <span id="seconds" class="block font-display text-2xl sm:text-4xl font-semibold text-champagne-600">00</span>
+            <span id="lbl-seconds" class="text-[10px] sm:text-xs font-sans uppercase tracking-widest text-charcoal/60">Secs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete Family Invitation Section -->
+  <section id="invitation" class="py-24 px-6 bg-white relative">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <span id="inv-badge" class="font-script text-3xl md:text-4xl text-champagne-500 block mb-1">With Warm Regards</span>
+        <h2 id="inv-heading" class="font-display text-3xl md:text-4xl text-charcoal tracking-wide">The Wedding Invitation</h2>
+        <div class="w-16 h-0.5 bg-champagne-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- Bilingual Content Container -->
+      <div class="bg-gradient-to-b from-cream via-blush-50/30 to-cream rounded-3xl p-8 md:p-12 border border-champagne-200 shadow-md relative">
+        
+        <!-- English Section -->
+        <div id="content-english" class="space-y-8">
+          <div class="text-center max-w-2xl mx-auto space-y-3">
+            <h3 class="font-display text-2xl md:text-3xl text-charcoal">Arjunagari Family</h3>
+            <p class="font-serif text-lg text-charcoal/80">
+              <strong>Smt. Aruna & Sri A. Mohan</strong>, APSRTC<br>
+              <span class="text-sm text-charcoal/70">Teachers Colony, Venkatagiri, Tirupati Dist.</span>
+            </p>
+            <p class="font-serif italic text-charcoal/75 text-base pt-2">
+              We cordially solicit your gracious presence with family & friends on the auspicious occasion of the marriage of our Elder daughter
+            </p>
+          </div>
+
+          <!-- The Couple Details Cards -->
+          <div class="grid md:grid-cols-2 gap-8 pt-4">
+            <!-- Bride Card -->
+            <div class="p-6 sm:p-8 rounded-3xl bg-white border border-champagne-200 shadow-md text-center relative overflow-hidden group hover:shadow-lg transition-shadow">
+              <!-- Bride Photo -->
+              <div class="w-32 h-32 sm:w-36 sm:h-36 mx-auto rounded-full overflow-hidden border-4 border-champagne-300 shadow-lg mb-4 bg-blush-50 relative">
+                <img src="./assets/couple/bride.jpg" alt="Chi.La.Sou. A. Lakshmi Prasanna" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <span class="text-[11px] uppercase tracking-widest font-bold text-champagne-700 bg-champagne-100/70 px-3 py-1 rounded-full">The Bride</span>
+              <h4 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal mt-3">Chi.La.Sou. A. Lakshmi Prasanna</h4>
+              <p class="font-sans text-xs text-charcoal/60 font-medium mt-0.5">(Prasanna Lakshmi), B.E.</p>
+              
+              <div class="text-xs text-charcoal/75 mt-4 pt-4 border-t border-champagne-100 space-y-1.5">
+                <p class="text-charcoal/70">Elder daughter of</p>
+                <p class="font-semibold text-charcoal text-sm">Smt. Aruna & Sri A. Mohan, APSRTC</p>
+                <div class="text-charcoal/80 pt-2 text-xs sm:text-sm text-center">
+                  <div class="address-row font-medium leading-relaxed">
+                    <span class="address-icon text-champagne-600" aria-hidden="true">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.36 7.587a15.86 15.86 0 003.031 2.198l.019.009.006.003.002.001.001.001zM10 12a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                    <span class="address-text">Teachers Colony, Venkatagiri, Tirupati Dist., A.P.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Groom Card -->
+            <div class="p-6 sm:p-8 rounded-3xl bg-white border border-champagne-200 shadow-md text-center relative overflow-hidden group hover:shadow-lg transition-shadow">
+              <!-- Groom Photo -->
+              <div class="w-32 h-32 sm:w-36 sm:h-36 mx-auto rounded-full overflow-hidden border-4 border-champagne-300 shadow-lg mb-4 bg-sage-50 relative">
+                <img src="./assets/couple/groom.jpg" alt="Chi. P. Praveen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center 10%;">
+              </div>
+              <span class="text-[11px] uppercase tracking-widest font-bold text-champagne-700 bg-champagne-100/70 px-3 py-1 rounded-full">The Groom</span>
+              <h4 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal mt-3">Chi. P. Praveen</h4>
+              <p class="font-sans text-xs text-charcoal/60 font-medium mt-0.5">B.Tech.</p>
+              
+              <div class="text-xs text-charcoal/75 mt-4 pt-4 border-t border-champagne-100 space-y-1.5">
+                <p class="text-charcoal/70">Son of <strong class="text-charcoal font-semibold">Smt. Saraswathi & Late Sri Periyasamy Govindan</strong></p>
+                <p class="text-[11px] text-charcoal/60">Brother of Sri P. Prasanth & Smt. Visalakshmi</p>
+                <div class="text-charcoal/80 pt-2 text-xs sm:text-sm text-center">
+                  <div class="address-row font-medium leading-relaxed">
+                    <span class="address-icon text-champagne-600" aria-hidden="true">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.36 7.587a15.86 15.86 0 003.031 2.198l.019.009.006.003.002.001.001.001zM10 12a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                    <span class="address-text">MGR Nagar, Bargur Town, Krishnagiri Dist., Tamil Nadu</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Auspicious Lagnam Box -->
+          <div class="p-6 rounded-2xl bg-amber-50/80 border border-amber-200 text-center">
+            <h5 class="font-serif text-xl font-bold text-charcoal">Sumuhurtham (Auspicious Moment)</h5>
+            <p class="text-sm font-medium text-charcoal/90 mt-1">
+              <strong>Friday, 20-11-2026</strong> between <strong>4:30 AM – 6:00 AM</strong> in Subha Lagnam
+            </p>
+            <p class="text-xs text-charcoal/70 mt-1 italic">
+              (Kartika Masam Ekadashi Tithi, Uttarabhadra Nakshatra Yuktha Shubha Lagnam • Pushkara Kalam: 5:43 AM – 5:47 AM)
+            </p>
+          </div>
+
+          <div class="text-center pt-2">
+            <p class="font-serif italic text-charcoal/70 text-base">
+              "With Best Compliments From: Near & Dear"
+            </p>
+          </div>
+        </div>
+
+        <!-- Telugu Section (Hidden by default, toggled via Language Switcher) -->
+        <div id="content-telugu" class="space-y-8 hidden font-telugu">
+          <div class="text-center max-w-2xl mx-auto space-y-3">
+            <h3 class="font-display text-2xl md:text-3xl text-charcoal font-telugu leading-normal">అర్జునగారి వారి పెండ్లిపిలుపు</h3>
+            <p class="font-telugu text-lg text-charcoal/90 leading-[2.1]">
+              <strong>శ్రీమతి అరుణ & శ్రీ అర్జునగారి మోహన్</strong>, APSRTC<br>
+              <span class="text-sm sm:text-base text-charcoal/70 font-telugu">ఉపాధ్యాయనగర్, వెంకటగిరి, తిరుపతి జిల్లా.</span>
+            </p>
+            <p class="text-charcoal/80 text-base md:text-lg leading-[2.1] md:leading-[2.3] pt-2 font-telugu">
+              మా జ్యేష్ఠ కుమార్తె చి॥ల॥సౌ॥ <strong>ఎ. లక్ష్మీ ప్రసన్న (ప్రసన్న లక్ష్మి) B.E.</strong>, అను వధువును — తమిళనాడు, క్రిష్ణగిరి జిల్లా, బర్గూర్ టౌన్ వాస్తవ్యులు శ్రీ పెరియసామి ప్రశాంత్ & శ్రీమతి విశాలక్ష్మి గార్ల సోదరుడు చి॥ <strong>పి. ప్రవీణ్ B.Tech.</strong> (శ్రీమతి సరస్వతి & కీ॥శే॥ శ్రీ పెరియసామి గోవిందన్ గార్ల కుమారుడు) అను వరునకు ఇచ్చి చేసే వివాహ మహోత్సవమునకు తమరు సకుటుంబ సపరివార సమేతంగా విచ్చేసి నూతన వధూవరులను ఆశీర్వదించ ప్రార్థన.
+            </p>
+          </div>
+
+          <!-- Telugu Couple Cards -->
+          <div class="grid md:grid-cols-2 gap-8 pt-4">
+            <!-- Bride Card (Telugu) -->
+            <div class="p-6 sm:p-8 rounded-3xl bg-white border border-champagne-200 shadow-md text-center relative overflow-hidden group hover:shadow-lg transition-shadow">
+              <div class="w-32 h-32 sm:w-36 sm:h-36 mx-auto rounded-full overflow-hidden border-4 border-champagne-300 shadow-lg mb-4 bg-blush-50 relative">
+                <img src="./assets/couple/bride.jpg" alt="చి॥ల॥సౌ॥ ఎ. లక్ష్మీ ప్రసన్న" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <span class="text-xs font-bold text-champagne-700 bg-champagne-100/70 px-3.5 py-1 rounded-full font-telugu tracking-normal">వధువు</span>
+              <h4 class="font-telugu text-2xl sm:text-3xl font-bold text-charcoal mt-3 leading-snug">చి॥ల॥సౌ॥ ఎ. లక్ష్మీ ప్రసన్న</h4>
+              <p class="text-xs sm:text-sm text-charcoal/60 font-medium mt-0.5 font-telugu">(ప్రసన్న లక్ష్మి) B.E.</p>
+              
+              <div class="text-sm text-charcoal/75 mt-4 pt-4 border-t border-champagne-100 space-y-2 font-telugu leading-relaxed">
+                <p class="leading-[1.9]">శ్రీమతి అరుణ & శ్రీ అర్జునగారి మోహన్ (APSRTC) గార్ల జ్యేష్ఠ కుమార్తె</p>
+                <div class="text-charcoal/80 pt-1 text-xs sm:text-sm text-center">
+                  <div class="address-row font-medium leading-[1.85]">
+                    <span class="address-icon text-champagne-600" aria-hidden="true">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.36 7.587a15.86 15.86 0 003.031 2.198l.019.009.006.003.002.001.001.001zM10 12a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                    <span class="address-text">ఉపాధ్యాయనగర్, వెంకటగిరి, తిరుపతి జిల్లా.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Groom Card (Telugu) -->
+            <div class="p-6 sm:p-8 rounded-3xl bg-white border border-champagne-200 shadow-md text-center relative overflow-hidden group hover:shadow-lg transition-shadow">
+              <div class="w-32 h-32 sm:w-36 sm:h-36 mx-auto rounded-full overflow-hidden border-4 border-champagne-300 shadow-lg mb-4 bg-sage-50 relative">
+                <img src="./assets/couple/groom.jpg" alt="చి॥ పి. ప్రవీణ్" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center 10%;">
+              </div>
+              <span class="text-xs font-bold text-champagne-700 bg-champagne-100/70 px-3.5 py-1 rounded-full font-telugu tracking-normal">వరుడు</span>
+              <h4 class="font-telugu text-2xl sm:text-3xl font-bold text-charcoal mt-3 leading-snug">చి॥ పి. ప్రవీణ్</h4>
+              <p class="text-xs sm:text-sm text-charcoal/60 font-medium mt-0.5 font-telugu">B.Tech.</p>
+              
+              <div class="text-sm text-charcoal/75 mt-4 pt-4 border-t border-champagne-100 space-y-2 font-telugu leading-relaxed">
+                <p class="leading-[1.9]">శ్రీమతి సరస్వతి & కీ॥శే॥ శ్రీ పెరియసామి గోవిందన్ గార్ల కుమారుడు</p>
+                <p class="text-xs sm:text-sm text-charcoal/70 leading-[1.8]">శ్రీ పెరియసామి ప్రశాంత్ & శ్రీమతి విశాలక్ష్మి గార్ల సోదరుడు</p>
+                <div class="text-charcoal/80 pt-1 text-xs sm:text-sm text-center">
+                  <div class="address-row font-medium leading-[1.85]">
+                    <span class="address-icon text-champagne-600" aria-hidden="true">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.36 7.587a15.86 15.86 0 003.031 2.198l.019.009.006.003.002.001.001.001zM10 12a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                    <span class="address-text">ఎమ్.జి.ఆర్. నగర్, బర్గూర్ టౌన్, క్రిష్ణగిరి జిల్లా, తమిళనాడు</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-amber-50/90 border border-amber-200 text-center space-y-2 font-telugu">
+            <h5 class="text-xl md:text-2xl font-bold text-charcoal leading-snug font-telugu">సుముహూర్తం</h5>
+            <p class="text-sm md:text-base text-charcoal leading-[2] md:leading-[2.2] font-telugu">
+              స్వస్తిశ్రీ పరాభవ నామ సం॥ కార్తీకమాసం ఏకాదశి తిథి సరియగు <strong>20-11-2026 వ తేది శుక్రవారం ఉదయాత్పూర్వం 4.30 - 6.00 గం॥ల మధ్య</strong> ఉత్తరాభాద్ర నక్షత్రయుక్త శుభ లగ్నము నందు (పుష్కరకాలం 5.43 - 5.47 ని॥ల మధ్య)
+            </p>
+          </div>
+
+          <div class="text-center pt-2 font-telugu">
+            <p class="text-charcoal/70 text-sm sm:text-base font-telugu leading-relaxed">
+              తమరాకకు ఎదురుచూచువారు: <strong>బంధుమిత్రులు</strong>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete Ceremonies & Schedule Section -->
+  <section id="schedule" class="py-24 px-6 bg-gradient-to-b from-cream via-sage-50/40 to-cream relative">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <span id="sch-badge" class="font-script text-3xl md:text-4xl text-champagne-500 block mb-1">Auspicious Occasions</span>
+        <h2 id="sch-heading" class="font-display text-3xl md:text-4xl text-charcoal tracking-wide">Ceremonies & Celebrations</h2>
+        <p id="sch-desc" class="font-serif italic text-charcoal/70 mt-2">Join us across every cherished moment</p>
+        <div class="w-16 h-0.5 bg-champagne-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="space-y-6">
+        
+        <!-- Event 1: Nalugu -->
+        <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-champagne-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl shrink-0 shadow-sm">
+                <i class="fa-solid fa-sun"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="ev1-date" class="text-xs uppercase font-sans tracking-widest text-champagne-700 font-bold">Thursday, 19th November 2026 • 10:00 AM</span>
+                </div>
+                <h3 id="ev1-title" class="font-serif text-2xl md:text-3xl text-charcoal mt-1">Nalugu Ceremony (నలుగు)</h3>
+                <p id="ev1-desc" class="text-charcoal/75 text-sm mt-1 leading-relaxed">
+                  Traditional auspicious turmeric purification and pre-wedding blessing ritual with family and loved ones.
+                </p>
+                <div class="mt-3 flex flex-wrap items-center gap-4 text-xs text-charcoal/70">
+                  <span><i class="fa-solid fa-location-dot text-champagne-500 mr-1.5"></i> <span id="ev1-loc">SRL Kalyana Mandapam Premises</span></span>
+                  <span><i class="fa-solid fa-clock text-champagne-500 mr-1.5"></i> <span id="ev1-time">10:00 AM onwards</span></span>
+                </div>
+              </div>
+            </div>
+            <a href="#venue" id="ev1-dir" class="self-start md:self-center text-xs font-semibold uppercase tracking-wider text-champagne-600 hover:text-champagne-700 underline underline-offset-4">Directions</a>
+          </div>
+        </div>
+
+        <!-- Event 2: Reception & Dinner -->
+        <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-champagne-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-blush-100 text-blush-500 flex items-center justify-center text-2xl shrink-0 shadow-sm">
+                <i class="fa-solid fa-champagne-glasses"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="ev2-date" class="text-xs uppercase font-sans tracking-widest text-champagne-700 font-bold">Thursday, 19th November 2026 • 7:00 PM Onwards</span>
+                  <span id="ev2-badge" class="px-2.5 py-0.5 rounded-full bg-blush-100 text-blush-700 text-[10px] uppercase font-bold tracking-wider">Grand Dinner</span>
+                </div>
+                <h3 id="ev2-title" class="font-serif text-2xl md:text-3xl text-charcoal mt-1">Reception & Dinner (రిసెప్షన్ & విందు)</h3>
+                <p id="ev2-desc" class="text-charcoal/75 text-sm mt-1 leading-relaxed">
+                  A grand evening celebration to welcome the guests, congratulate the couple, followed by a sumptuous traditional wedding feast.
+                </p>
+                <div class="mt-3 flex flex-wrap items-center gap-4 text-xs text-charcoal/70">
+                  <span><i class="fa-solid fa-location-dot text-champagne-500 mr-1.5"></i> <span id="ev2-loc">Main Dining & Stage Hall</span></span>
+                  <span><i class="fa-solid fa-utensils text-champagne-500 mr-1.5"></i> <span id="ev2-feast">Traditional South Indian Feast</span></span>
+                </div>
+              </div>
+            </div>
+            <a href="#venue" id="ev2-dir" class="self-start md:self-center text-xs font-semibold uppercase tracking-wider text-champagne-600 hover:text-champagne-700 underline underline-offset-4">Directions</a>
+          </div>
+        </div>
+
+        <!-- Event 3: Sumuhurtham -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 border-2 border-champagne-400 shadow-lg relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-28 h-28 bg-amber-100/50 rounded-full pointer-events-none"></div>
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-champagne-100 text-champagne-600 flex items-center justify-center text-2xl shrink-0 shadow-sm">
+                <i class="fa-solid fa-ring"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="ev3-date" class="text-xs uppercase font-sans tracking-widest text-champagne-700 font-bold">Friday, 20th November 2026 • Early Morning</span>
+                  <span id="ev3-badge" class="px-2.5 py-0.5 rounded-full bg-champagne-200 text-champagne-800 text-[10px] uppercase font-bold tracking-wider">Sumuhurtham</span>
+                </div>
+                <h3 id="ev3-title" class="font-serif text-2xl md:text-3xl text-charcoal mt-1">Wedding Ceremony (సుముహూర్తం)</h3>
+                <p id="ev3-desc" class="text-charcoal/75 text-sm mt-1 leading-relaxed">
+                  The sacred marriage ceremony in Subha Lagnam between <strong>4:30 AM – 6:00 AM</strong> (Pushkara Kalam: 5:43 AM – 5:47 AM), tying of the Mangalsutra (Jeelakarra Bellam & Mangalya Dharana), and Saptapadi.
+                </p>
+                <div class="mt-3 flex flex-wrap items-center gap-4 text-xs text-charcoal/70">
+                  <span><i class="fa-solid fa-location-dot text-champagne-500 mr-1.5"></i> <span id="ev3-loc">Kalyana Mandapam Stage</span></span>
+                  <span><i class="fa-solid fa-clock text-champagne-500 mr-1.5"></i> <span id="ev3-time">4:30 AM to 6:00 AM</span></span>
+                </div>
+              </div>
+            </div>
+            <a href="#venue" id="ev3-dir" class="self-start md:self-center text-xs font-semibold uppercase tracking-wider text-champagne-600 hover:text-champagne-700 underline underline-offset-4">Directions</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Venue & Google Maps Directions Section -->
+  <section id="venue" class="py-24 px-6 bg-white relative">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span id="ven-badge" class="font-script text-3xl md:text-4xl text-champagne-500 block mb-1">Destination</span>
+        <h2 id="ven-heading" class="font-display text-3xl md:text-4xl text-charcoal tracking-wide">Wedding Venue & Map</h2>
+        <div class="w-16 h-0.5 bg-champagne-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-center bg-cream/60 p-6 md:p-10 rounded-3xl border border-champagne-200 shadow-sm">
+        <div>
+          <span id="ven-type" class="text-xs uppercase font-sans tracking-widest text-champagne-700 font-bold">Kalyana Mandapam</span>
+          <h3 id="ven-name" class="font-serif text-3xl text-charcoal mt-1 mb-2">SRL Kalyana Mandapam</h3>
+          <p id="ven-telugu-sub" class="font-serif text-base text-charcoal/70 mb-1">ఎస్.ఆర్.ఎల్. కళ్యాణమండపము</p>
+          <p id="ven-address" class="text-charcoal/80 text-sm leading-relaxed mb-6 font-medium">
+            Tirupati Road, Venkatagiri, Tirupati District, Andhra Pradesh.
+          </p>
+
+          <div class="space-y-4 text-sm text-charcoal/75">
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-car text-champagne-600 mt-1"></i>
+              <div>
+                <strong id="ven-lm1-title" class="font-medium text-charcoal">Location Landmark:</strong>
+                <p id="ven-lm1-desc">Conveniently located on main Tirupati Road with ample parking for wedding guests.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-train text-champagne-600 mt-1"></i>
+              <div>
+                <strong id="ven-lm2-title" class="font-medium text-charcoal">Nearest Railway Stations:</strong>
+                <p id="ven-lm2-desc">Venkatagiri Railway Station (VKI) is just ~3 km away; Gudur Junction is ~45 km away.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-plane-arrival text-champagne-600 mt-1"></i>
+              <div>
+                <strong id="ven-lm3-title" class="font-medium text-charcoal">Airport Connectivity:</strong>
+                <p id="ven-lm3-desc">Tirupati Airport (TIR) is approximately 75 km away via State Highway.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="https://maps.google.com/?q=SRL+Kalyana+Mandapam+Tirupati+Road+Venkatagiri" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-champagne-500 hover:bg-champagne-600 text-white font-sans text-xs uppercase tracking-wider font-semibold shadow-sm hover:shadow transition-all inline-flex items-center gap-2">
+              <i class="fa-solid fa-location-arrow"></i> <span id="ven-map-btn-text">Open Google Maps</span>
+            </a>
+            <button id="copy-address-btn" class="px-5 py-3 rounded-full bg-white border border-champagne-300 text-charcoal hover:bg-blush-50 font-sans text-xs uppercase tracking-wider font-medium transition-all inline-flex items-center gap-2">
+              <i class="fa-regular fa-copy"></i> <span id="copy-text">Copy Address</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Embedded Interactive Google Map Preview -->
+        <div class="h-80 md:h-96 rounded-2xl overflow-hidden shadow-md border border-champagne-200 relative group">
+          <iframe 
+            title="SRL Kalyana Mandapam Venkatagiri Location Map"
+            src="https://maps.google.com/maps?q=SRL%20Kalyana%20Mandapam,%20Tirupati%20Road,%20Venkatagiri&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+            class="w-full h-full border-0" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement Moments Carousel Section -->
+  <section id="moments" class="py-24 px-6 bg-gradient-to-b from-cream via-blush-50/30 to-cream relative">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <span id="mom-badge" class="font-script text-3xl md:text-4xl text-champagne-500 block mb-1">Our Journey</span>
+        <h2 id="mom-heading" class="font-display text-3xl md:text-4xl text-charcoal tracking-wide">Engagement Moments</h2>
+        <p id="mom-desc" class="font-serif italic text-charcoal/70 mt-2">Glimpses of love, tradition, and togetherness</p>
+        <div class="w-16 h-0.5 bg-champagne-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- Carousel Container -->
+      <div class="relative max-w-4xl mx-auto bg-white p-4 sm:p-6 rounded-3xl shadow-xl border border-champagne-200">
+        <!-- Slides Frame with responsive height and complete containment -->
+        <div class="relative overflow-hidden rounded-2xl bg-cream/40 border border-champagne-100 h-[360px] sm:h-[480px] md:h-[540px] flex items-center justify-center group select-none">
+          <!-- Slides Wrapper -->
+          <div id="carousel-track" class="flex transition-transform duration-700 ease-out h-full w-full">
+            
+            <!-- Slide 1 -->
+            <div class="min-w-full h-full flex items-center justify-center p-2 flex-shrink-0">
+              <img src="./assets/engagement/photo1.jpg" alt="Traditional engagement ceremony with family" class="max-w-full max-h-full object-contain rounded-xl shadow-sm">
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="min-w-full h-full flex items-center justify-center p-2 flex-shrink-0">
+              <img src="./assets/engagement/photo2.jpg" alt="Auspicious offerings and blessings with parents" class="max-w-full max-h-full object-contain rounded-xl shadow-sm">
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="min-w-full h-full flex items-center justify-center p-2 flex-shrink-0">
+              <img src="./assets/engagement/photo3.jpg" alt="Lakshmi Prasanna and Praveen smiling in wedding garlands" class="max-w-full max-h-full object-contain rounded-xl shadow-sm">
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="min-w-full h-full flex items-center justify-center p-2 flex-shrink-0">
+              <img src="./assets/engagement/photo4.jpg" alt="The couple happily presenting their engagement rings" class="max-w-full max-h-full object-contain rounded-xl shadow-sm">
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="min-w-full h-full flex items-center justify-center p-2 flex-shrink-0">
+              <img src="./assets/engagement/photo5.jpg" alt="A loving glance between the couple" class="max-w-full max-h-full object-contain rounded-xl shadow-sm">
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="min-w-full h-full flex items-center justify-center p-2 flex-shrink-0">
+              <img src="./assets/engagement/photo6.jpg" alt="Close-up of henna hands holding engagement rings" class="max-w-full max-h-full object-contain rounded-xl shadow-sm">
+            </div>
+
+            <!-- Slide 7 -->
+            <div class="min-w-full h-full flex items-center justify-center p-2 flex-shrink-0">
+              <img src="./assets/engagement/photo7.jpg" alt="Full length portrait of Lakshmi Prasanna and Praveen" class="max-w-full max-h-full object-contain rounded-xl shadow-sm">
+            </div>
+
+            <!-- Slide 8 -->
+            <div class="min-w-full h-full flex items-center justify-center p-2 flex-shrink-0">
+              <img src="./assets/engagement/photo8.jpg" alt="Lakshmi Prasanna and Praveen with parents and siblings on stage" class="max-w-full max-h-full object-contain rounded-xl shadow-sm">
+            </div>
+
+            <!-- Slide 9 -->
+            <div class="min-w-full h-full flex items-center justify-center p-2 flex-shrink-0">
+              <img src="./assets/engagement/photo9.jpg" alt="Together with beloved family elders on stage" class="max-w-full max-h-full object-contain rounded-xl shadow-sm">
+            </div>
+
+            <!-- Slide 10 -->
+            <div class="min-w-full h-full flex items-center justify-center p-2 flex-shrink-0">
+              <img src="./assets/engagement/photo10.jpg" alt="Warm family group celebration with the couple" class="max-w-full max-h-full object-contain rounded-xl shadow-sm">
+            </div>
+
+          </div>
+
+          <!-- Prev Button -->
+          <button id="carousel-prev" aria-label="Previous slide" class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-white/90 hover:bg-white text-charcoal shadow-lg border border-champagne-200 flex items-center justify-center transition-all hover:scale-105 active:scale-95 z-20 backdrop-blur-md">
+            <i class="fa-solid fa-chevron-left text-sm text-champagne-700"></i>
+          </button>
+
+          <!-- Next Button -->
+          <button id="carousel-next" aria-label="Next slide" class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-white/90 hover:bg-white text-charcoal shadow-lg border border-champagne-200 flex items-center justify-center transition-all hover:scale-105 active:scale-95 z-20 backdrop-blur-md">
+            <i class="fa-solid fa-chevron-right text-sm text-champagne-700"></i>
+          </button>
+        </div>
+
+        <!-- Dynamic Caption Below Photo -->
+        <div class="mt-4 text-center px-4 py-2 bg-cream/40 rounded-xl border border-champagne-100">
+          <h3 id="carousel-caption-title" class="font-serif text-lg sm:text-xl text-charcoal font-semibold">Sacred Blessings with Family & Elders</h3>
+          <p id="carousel-caption-sub" class="text-xs sm:text-sm text-charcoal/70 font-sans mt-0.5">Auspicious beginnings with family prayers and rituals</p>
+        </div>
+
+        <!-- Dot Indicators & Controls -->
+        <div class="flex items-center justify-between mt-3 px-2">
+          <div class="text-xs text-charcoal/60 font-serif italic">
+            <span id="mom-count-photo">Photo</span> <span id="carousel-current" class="font-semibold text-charcoal">1</span> <span id="mom-count-of">of</span> <span id="carousel-total">10</span>
+          </div>
+
+          <div class="flex items-center gap-1.5 sm:gap-2" id="carousel-dots">
+            <button class="carousel-dot w-8 h-2.5 rounded-full bg-champagne-500 transition-all duration-300" data-index="0" aria-label="Slide 1"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="1" aria-label="Slide 2"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="2" aria-label="Slide 3"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="3" aria-label="Slide 4"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="4" aria-label="Slide 5"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="5" aria-label="Slide 6"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="6" aria-label="Slide 7"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="7" aria-label="Slide 8"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="8" aria-label="Slide 9"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="9" aria-label="Slide 10"></button>
+          </div>
+
+          <button id="carousel-play-toggle" class="text-xs text-charcoal/60 hover:text-champagne-700 transition flex items-center gap-1.5" title="Toggle Autoplay">
+            <i id="carousel-play-icon" class="fa-solid fa-pause"></i> <span id="carousel-play-text" class="hidden sm:inline text-[11px] uppercase tracking-wider">Pause</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="py-16 px-6 bg-cream text-center border-t border-champagne-200">
+    <div class="max-w-xl mx-auto space-y-4">
+      <div id="ft-names" class="font-script text-4xl text-champagne-600">
+        Lakshmi Prasanna & Praveen
+      </div>
+      <p id="ft-quote" class="font-serif italic text-charcoal/80 text-lg">
+        "Two lives, two hearts, joined together in friendship, united forever in love."
+      </p>
+      <div id="ft-date" class="text-xs font-sans tracking-widest uppercase text-charcoal/60 pt-4">
+        19th & 20th November 2026 • Venkatagiri, Andhra Pradesh
+      </div>
+      <div id="ft-compliments" class="text-xs text-charcoal/70 font-serif">
+        With Best Compliments From: <strong>Near & Dear</strong>
+      </div>
+      <p id="ft-family" class="text-[11px] text-charcoal/40 pt-2">
+        Arjunagari Family Wedding Invitation
+      </p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="./script.js?v=4"></script>
+</body>
+</html>

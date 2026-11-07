@@ -884,6 +884,170 @@ function initCarousel() {
 }
 
 // ----------------------------------------------------
+// 11. Fullscreen Photo Lightbox Modal
+// ----------------------------------------------------
+function initPhotoLightbox() {
+  const lightbox = document.getElementById("photo-lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxCaption = document.getElementById("lightbox-caption");
+  const closeBtn = document.getElementById("lightbox-close");
+  const prevBtn = document.getElementById("lightbox-prev");
+  const nextBtn = document.getElementById("lightbox-next");
+
+  if (!lightbox || !lightboxImg) return;
+
+  const carouselImages = Array.from(document.querySelectorAll(".carousel-slide-item img"));
+  let currentActiveIndex = -1;
+  let isCarouselMode = false;
+
+  function openLightbox(src, alt, captionText, index = -1) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "Wedding photo";
+    if (lightboxCaption) {
+      lightboxCaption.textContent = captionText || alt || "";
+      lightboxCaption.style.display = captionText || alt ? "block" : "none";
+    }
+
+    if (index >= 0 && carouselImages.length > 0) {
+      isCarouselMode = true;
+      currentActiveIndex = index;
+      if (prevBtn) prevBtn.style.display = "flex";
+      if (nextBtn) nextBtn.style.display = "flex";
+    } else {
+      isCarouselMode = false;
+      currentActiveIndex = -1;
+      if (prevBtn) prevBtn.style.display = "none";
+      if (nextBtn) nextBtn.style.display = "none";
+    }
+
+    lightbox.classList.remove("hidden");
+    // Trigger fade in animation
+    requestAnimationFrame(() => {
+      lightbox.classList.remove("opacity-0");
+      lightbox.classList.add("opacity-100");
+    });
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("opacity-100");
+    lightbox.classList.add("opacity-0");
+    setTimeout(() => {
+      lightbox.classList.add("hidden");
+      lightboxImg.src = "";
+      document.body.style.overflow = "";
+    }, 280);
+  }
+
+  function showLightboxIndex(idx) {
+    if (carouselImages.length === 0) return;
+    if (idx < 0) idx = carouselImages.length - 1;
+    if (idx >= carouselImages.length) idx = 0;
+    currentActiveIndex = idx;
+
+    const targetImg = carouselImages[idx];
+    if (!targetImg) return;
+
+    let capText = targetImg.getAttribute("alt") || "";
+    const list = CAROUSEL_CAPTIONS[currentAppLang] || CAROUSEL_CAPTIONS.en;
+    if (list && list[idx]) {
+      capText = `${list[idx].title} — ${list[idx].sub}`;
+    }
+
+    lightboxImg.style.opacity = "0.4";
+    lightboxImg.src = targetImg.src;
+    lightboxImg.alt = targetImg.alt || "Engagement photo";
+    setTimeout(() => {
+      lightboxImg.style.opacity = "1";
+    }, 150);
+
+    if (lightboxCaption) {
+      lightboxCaption.textContent = capText;
+      lightboxCaption.style.display = capText ? "block" : "none";
+    }
+  }
+
+  // Attach click listener to all lightbox triggers
+  document.querySelectorAll(".lightbox-trigger").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const img = el.tagName === "IMG" ? el : el.querySelector("img");
+      if (!img) return;
+
+      const idxAttr = el.getAttribute("data-index") || img.getAttribute("data-index");
+      const captionAttr = el.getAttribute("data-caption") || img.getAttribute("data-caption") || img.getAttribute("alt");
+
+      if (idxAttr !== null && idxAttr !== undefined) {
+        const idx = parseInt(idxAttr, 10);
+        let capText = captionAttr;
+        const list = CAROUSEL_CAPTIONS[currentAppLang] || CAROUSEL_CAPTIONS.en;
+        if (list && list[idx]) {
+          capText = `${list[idx].title} — ${list[idx].sub}`;
+        }
+        openLightbox(img.src, img.alt, capText, idx);
+      } else {
+        openLightbox(img.src, img.alt, captionAttr, -1);
+      }
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
+
+  // Close on backdrop click (click outside image)
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox || e.target.classList.contains("relative") && !lightboxImg.contains(e.target)) {
+      closeLightbox();
+    }
+  });
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (isCarouselMode) showLightboxIndex(currentActiveIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (isCarouselMode) showLightboxIndex(currentActiveIndex + 1);
+    });
+  }
+
+  // Keyboard navigation
+  window.addEventListener("keydown", (e) => {
+    if (lightbox.classList.contains("hidden")) return;
+    if (e.key === "Escape") {
+      closeLightbox();
+    } else if (e.key === "ArrowLeft" && isCarouselMode) {
+      showLightboxIndex(currentActiveIndex - 1);
+    } else if (e.key === "ArrowRight" && isCarouselMode) {
+      showLightboxIndex(currentActiveIndex + 1);
+    }
+  });
+
+  // Touch swipe support in lightbox
+  let lbStartX = 0;
+  let lbEndX = 0;
+
+  lightbox.addEventListener("touchstart", (e) => {
+    lbStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  lightbox.addEventListener("touchend", (e) => {
+    lbEndX = e.changedTouches[0].screenX;
+    const diff = lbStartX - lbEndX;
+    if (Math.abs(diff) > 40 && isCarouselMode) {
+      if (diff > 0) {
+        showLightboxIndex(currentActiveIndex + 1);
+      } else {
+        showLightboxIndex(currentActiveIndex - 1);
+      }
+    }
+  }, { passive: true });
+}
+
+// ----------------------------------------------------
 // App Initialization
 // ----------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
@@ -893,6 +1057,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMusicToggle();
   initLanguageToggle();
   initCarousel();
+  initPhotoLightbox();
   initCopyAddress();
   initMobileNav();
 });

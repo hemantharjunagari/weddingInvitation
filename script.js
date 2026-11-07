@@ -192,12 +192,17 @@ function initMusicToggle() {
 
   if (!toggleBtn || !audio) return;
 
+  // Set low ambient background volume (25%)
+  audio.volume = 0.25;
+
   let isPlaying = false;
+  let wasPlayingBeforeHidden = false;
+  let manualPause = false;
 
   function updateTooltip(playing) {
     if (!tooltip) return;
     if (playing) {
-      const text = currentAppLang === "te" ? "సంగీతం ప్లే అవుతోంది" : "Melody Playing";
+      const text = currentAppLang === "te" ? "సంగీతం ప్లే అవుతోంది" : "Melody Playing (Soft)";
       tooltip.innerHTML = `<span class="flex items-center gap-1.5"><i class="fa-solid fa-pause text-champagne-400"></i> ${text}</span>`;
     } else {
       const text = currentAppLang === "te" ? "సంగీతం వినండి" : "Tap for melody";
@@ -206,22 +211,29 @@ function initMusicToggle() {
   }
 
   function startMusic() {
+    audio.volume = 0.25;
     audio.play().then(() => {
       isPlaying = true;
+      manualPause = false;
       toggleBtn.classList.add("music-playing");
       if (musicIcon) {
         musicIcon.classList.remove("fa-music");
         musicIcon.classList.add("fa-pause");
       }
       updateTooltip(true);
+      removeFirstInteractionListeners();
     }).catch((err) => {
-      console.warn("Audio play prevented / blocked:", err);
+      console.warn("Autoplay was prevented by browser policy:", err);
     });
   }
 
-  function stopMusic() {
+  function stopMusic(isManual = true) {
     audio.pause();
     isPlaying = false;
+    if (isManual) {
+      manualPause = true;
+      wasPlayingBeforeHidden = false;
+    }
     toggleBtn.classList.remove("music-playing");
     if (musicIcon) {
       musicIcon.classList.remove("fa-pause");
@@ -232,7 +244,7 @@ function initMusicToggle() {
 
   toggleBtn.addEventListener("click", () => {
     if (isPlaying) {
-      stopMusic();
+      stopMusic(true);
     } else {
       startMusic();
     }
@@ -259,6 +271,57 @@ function initMusicToggle() {
       updateTooltip(false);
     }
   });
+
+  // Stop music when the page is not being watched (tab switched, window minimized, phone locked)
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      if (isPlaying) {
+        wasPlayingBeforeHidden = true;
+        stopMusic(false); // Pause without marking manual pause
+      }
+    } else {
+      if (wasPlayingBeforeHidden && !manualPause) {
+        wasPlayingBeforeHidden = false;
+        startMusic();
+      }
+    }
+  });
+
+  window.addEventListener("blur", () => {
+    if (isPlaying) {
+      wasPlayingBeforeHidden = true;
+      stopMusic(false);
+    }
+  });
+
+  window.addEventListener("focus", () => {
+    if (wasPlayingBeforeHidden && !document.hidden && !manualPause) {
+      wasPlayingBeforeHidden = false;
+      startMusic();
+    }
+  });
+
+  // Attempt autoplay immediately on page load
+  startMusic();
+
+  // If browser blocks autoplay until interaction, play on first user tap/scroll/click
+  function handleFirstInteraction() {
+    if (manualPause || isPlaying) return;
+    removeFirstInteractionListeners();
+    startMusic();
+  }
+
+  function removeFirstInteractionListeners() {
+    window.removeEventListener("click", handleFirstInteraction);
+    window.removeEventListener("touchstart", handleFirstInteraction);
+    window.removeEventListener("scroll", handleFirstInteraction);
+    window.removeEventListener("keydown", handleFirstInteraction);
+  }
+
+  window.addEventListener("click", handleFirstInteraction, { passive: true });
+  window.addEventListener("touchstart", handleFirstInteraction, { passive: true });
+  window.addEventListener("scroll", handleFirstInteraction, { passive: true });
+  window.addEventListener("keydown", handleFirstInteraction, { passive: true });
 
   window.addEventListener("wedding_lang_changed", () => {
     updateTooltip(isPlaying);

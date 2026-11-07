@@ -437,12 +437,6 @@ const I18N = {
     venType: "Kalyana Mandapam",
     venName: "SRL Kalyana Mandapam",
     venAddress: "Tirupati Road, Venkatagiri, Tirupati District, Andhra Pradesh.",
-    venLm1Title: "Location Landmark:",
-    venLm1Desc: "Conveniently located on main Tirupati Road with ample parking for wedding guests.",
-    venLm2Title: "Nearest Railway Stations:",
-    venLm2Desc: "Venkatagiri Railway Station (VKI) is just ~3 km away; Gudur Junction is ~45 km away.",
-    venLm3Title: "Airport Connectivity:",
-    venLm3Desc: "Tirupati Airport (TIR) is approximately 75 km away via State Highway.",
     venMapBtn: "Open Google Maps",
     copyBtn: "Copy Address",
 
@@ -522,12 +516,6 @@ const I18N = {
     venType: "కళ్యాణ మండపము",
     venName: "ఎస్.ఆర్.ఎల్. కళ్యాణమండపము",
     venAddress: "తిరుపతి రోడ్, వెంకటగిరి, తిరుపతి జిల్లా, ఆంధ్రప్రదేశ్.",
-    venLm1Title: "ప్రధాన ఆనవాలు:",
-    venLm1Desc: "తిరుపతి ప్రధాన రహదారి పక్కనే సులభంగా చేరుకోగల ప్రదేశం మరియు విశాలమైన పార్కింగ్ సౌకర్యం.",
-    venLm2Title: "సమీప రైల్వే స్టేషన్లు:",
-    venLm2Desc: "వెంకటగిరి రైల్వే స్టేషన్ (VKI) సుమారు 3 కి.మీ; గూడూరు జంక్షన్ సుమారు 45 కి.మీ.",
-    venLm3Title: "విమానాశ్రయం:",
-    venLm3Desc: "తిరుపతి అంతర్జాతీయ విమానాశ్రయం (TIR) స్టేట్ హైవే ద్వారా సుమారు 75 కి.మీ.",
     venMapBtn: "గూగుల్ మ్యాప్స్ చూడండి",
     copyBtn: "చిరునామా కాపీ చేయండి",
 
@@ -639,12 +627,6 @@ function applyLanguage(lang) {
   setElText("ven-type", data.venType);
   setElText("ven-name", data.venName);
   setElText("ven-address", data.venAddress);
-  setElText("ven-lm1-title", data.venLm1Title);
-  setElText("ven-lm1-desc", data.venLm1Desc);
-  setElText("ven-lm2-title", data.venLm2Title);
-  setElText("ven-lm2-desc", data.venLm2Desc);
-  setElText("ven-lm3-title", data.venLm3Title);
-  setElText("ven-lm3-desc", data.venLm3Desc);
   setElText("ven-map-btn-text", data.venMapBtn);
   setElText("copy-text", data.copyBtn);
 

@@ -121,9 +121,9 @@
       
       <nav class="hidden md:flex items-center space-x-7 text-xs font-medium uppercase tracking-widest text-charcoal/80">
         <a href="#invitation" id="nav-invitation" class="hover:text-champagne-600 transition-colors">The Invitation</a>
+        <a href="#moments" id="nav-moments" class="hover:text-champagne-600 transition-colors">Moments</a>
         <a href="#schedule" id="nav-schedule" class="hover:text-champagne-600 transition-colors">Ceremonies</a>
         <a href="#venue" id="nav-venue" class="hover:text-champagne-600 transition-colors">Venue & Map</a>
-        <a href="#moments" id="nav-moments" class="hover:text-champagne-600 transition-colors">Moments</a>
       </nav>
 
       <!-- Language & Mobile Menu Button -->
@@ -141,9 +141,9 @@
     <!-- Mobile Nav Dropdown -->
     <div id="mobile-menu" class="hidden md:hidden bg-cream/95 backdrop-blur-lg border-b border-champagne-200 py-4 px-6 mt-3 space-y-3 text-center text-sm uppercase tracking-wider font-medium">
       <a href="#invitation" id="m-nav-invitation" class="block py-2 hover:text-champagne-600">The Invitation</a>
+      <a href="#moments" id="m-nav-moments" class="block py-2 hover:text-champagne-600">Moments</a>
       <a href="#schedule" id="m-nav-schedule" class="block py-2 hover:text-champagne-600">Ceremonies & Muhurtham</a>
       <a href="#venue" id="m-nav-venue" class="block py-2 hover:text-champagne-600">Venue & Directions</a>
-      <a href="#moments" id="m-nav-moments" class="block py-2 hover:text-champagne-600">Moments</a>
       <div class="pt-2 border-t border-champagne-200">
         <button id="lang-toggle-btn-mobile" class="w-full py-2 rounded-full border border-champagne-400 text-champagne-700 bg-white font-medium text-xs flex items-center justify-center gap-1.5 shadow-sm">
           <i class="fa-solid fa-language"></i> <span id="m-lang-btn-text">Switch to తెలుగు</span>
@@ -447,6 +447,119 @@
     </div>
   </section>
 
+  <!-- Engagement Moments Carousel Section -->
+  <section id="moments" class="py-24 px-6 bg-gradient-to-b from-cream via-blush-50/30 to-cream relative">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <span id="mom-badge" class="font-script text-3xl md:text-4xl text-champagne-500 block mb-1">Our Journey</span>
+        <h2 id="mom-heading" class="font-display text-3xl md:text-4xl text-charcoal tracking-wide">Engagement Moments</h2>
+        <p id="mom-desc" class="font-serif italic text-charcoal/70 mt-2">Glimpses of love, tradition, and togetherness</p>
+        <div class="w-16 h-0.5 bg-champagne-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- Carousel Container -->
+      <div class="relative max-w-4xl mx-auto bg-white p-4 sm:p-6 rounded-3xl shadow-xl border border-champagne-200">
+        <!-- Slides Frame with responsive height and complete containment -->
+        <div class="relative overflow-hidden rounded-2xl bg-cream/40 border border-champagne-100 h-[340px] sm:h-[480px] md:h-[540px] flex items-center justify-center group select-none">
+          <!-- Slides Wrapper -->
+          <div id="carousel-track" class="flex transition-transform duration-700 ease-out h-full w-full">
+            
+            <!-- Slide 1 -->
+            <div class="carousel-slide-item">
+              <img src="./assets/engagement/photo1.jpg" alt="Bride parents giving lagna patrika to groom brother and sister in law" class="lightbox-trigger" data-index="0" title="Click to view full photo">
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-slide-item">
+              <img src="./assets/engagement/photo2.jpg" alt="Groom brother and sister in law giving lagna patrika to bride parents" class="lightbox-trigger" data-index="1" title="Click to view full photo">
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-slide-item">
+              <img src="./assets/engagement/photo3.jpg" alt="Lakshmi Prasanna and Praveen smiling in wedding garlands" class="lightbox-trigger" data-index="2" title="Click to view full photo">
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="carousel-slide-item">
+              <img src="./assets/engagement/photo4.jpg" alt="The couple happily presenting their engagement rings" class="lightbox-trigger" data-index="3" title="Click to view full photo">
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="carousel-slide-item">
+              <img src="./assets/engagement/photo5.jpg" alt="A loving glance between the couple" class="lightbox-trigger" data-index="4" title="Click to view full photo">
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="carousel-slide-item">
+              <img src="./assets/engagement/photo6.jpg" alt="Close-up of henna hands holding engagement rings" class="lightbox-trigger" data-index="5" title="Click to view full photo">
+            </div>
+
+            <!-- Slide 7 -->
+            <div class="carousel-slide-item">
+              <img src="./assets/engagement/photo7.jpg" alt="Full length portrait of Lakshmi Prasanna and Praveen" class="lightbox-trigger" data-index="6" title="Click to view full photo">
+            </div>
+
+            <!-- Slide 8 -->
+            <div class="carousel-slide-item">
+              <img src="./assets/engagement/photo8.jpg" alt="Group photo with bride family" class="lightbox-trigger" data-index="7" title="Click to view full photo">
+            </div>
+
+            <!-- Slide 9 -->
+            <div class="carousel-slide-item">
+              <img src="./assets/engagement/photo9.jpg" alt="Group photo with parents of bride and groom" class="lightbox-trigger" data-index="8" title="Click to view full photo">
+            </div>
+
+            <!-- Slide 10 -->
+            <div class="carousel-slide-item">
+              <img src="./assets/engagement/photo10.jpg" alt="Group photo with groom parents" class="lightbox-trigger" data-index="9" title="Click to view full photo">
+            </div>
+
+          </div>
+
+          <!-- Prev Button -->
+          <button id="carousel-prev" aria-label="Previous slide" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 sm:w-11 h-8 sm:h-11 rounded-full bg-white/90 hover:bg-white text-charcoal shadow-md border border-champagne-200 flex items-center justify-center transition-all hover:scale-105 active:scale-95 z-20 backdrop-blur-md">
+            <i class="fa-solid fa-chevron-left text-xs sm:text-sm text-champagne-700"></i>
+          </button>
+
+          <!-- Next Button -->
+          <button id="carousel-next" aria-label="Next slide" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 sm:w-11 h-8 sm:h-11 rounded-full bg-white/90 hover:bg-white text-charcoal shadow-md border border-champagne-200 flex items-center justify-center transition-all hover:scale-105 active:scale-95 z-20 backdrop-blur-md">
+            <i class="fa-solid fa-chevron-right text-xs sm:text-sm text-champagne-700"></i>
+          </button>
+        </div>
+
+        <!-- Dynamic Caption Below Photo -->
+        <div class="mt-4 text-center px-4 py-2 bg-cream/40 rounded-xl border border-champagne-100">
+          <h3 id="carousel-caption-title" class="font-serif text-lg sm:text-xl text-charcoal font-semibold">Exchange of Lagna Patrika</h3>
+          <p id="carousel-caption-sub" class="text-xs sm:text-sm text-charcoal/70 font-sans mt-0.5">Bride's parents presenting the auspicious Lagna Patrika to the groom's brother & sister-in-law</p>
+        </div>
+
+        <!-- Dot Indicators & Controls -->
+        <div class="flex items-center justify-between mt-3 px-2">
+          <div class="text-xs text-charcoal/60 font-serif italic">
+            <span id="mom-count-photo">Photo</span> <span id="carousel-current" class="font-semibold text-charcoal">1</span> <span id="mom-count-of">of</span> <span id="carousel-total">10</span>
+          </div>
+
+          <div class="flex items-center gap-1.5 sm:gap-2" id="carousel-dots">
+            <button class="carousel-dot w-8 h-2.5 rounded-full bg-champagne-500 transition-all duration-300" data-index="0" aria-label="Slide 1"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="1" aria-label="Slide 2"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="2" aria-label="Slide 3"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="3" aria-label="Slide 4"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="4" aria-label="Slide 5"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="5" aria-label="Slide 6"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="6" aria-label="Slide 7"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="7" aria-label="Slide 8"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="8" aria-label="Slide 9"></button>
+            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="9" aria-label="Slide 10"></button>
+          </div>
+
+          <button id="carousel-play-toggle" class="text-xs text-charcoal/60 hover:text-champagne-700 transition flex items-center gap-1.5" title="Toggle Autoplay">
+            <i id="carousel-play-icon" class="fa-solid fa-pause"></i> <span id="carousel-play-text" class="hidden sm:inline text-[11px] uppercase tracking-wider">Pause</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Complete Ceremonies & Schedule Section -->
   <section id="schedule" class="py-24 px-6 bg-gradient-to-b from-cream via-sage-50/40 to-cream relative">
     <div class="max-w-4xl mx-auto">
@@ -603,119 +716,6 @@
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Engagement Moments Carousel Section -->
-  <section id="moments" class="py-24 px-6 bg-gradient-to-b from-cream via-blush-50/30 to-cream relative">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <span id="mom-badge" class="font-script text-3xl md:text-4xl text-champagne-500 block mb-1">Our Journey</span>
-        <h2 id="mom-heading" class="font-display text-3xl md:text-4xl text-charcoal tracking-wide">Engagement Moments</h2>
-        <p id="mom-desc" class="font-serif italic text-charcoal/70 mt-2">Glimpses of love, tradition, and togetherness</p>
-        <div class="w-16 h-0.5 bg-champagne-400 mx-auto mt-4 rounded-full"></div>
-      </div>
-
-      <!-- Carousel Container -->
-      <div class="relative max-w-4xl mx-auto bg-white p-4 sm:p-6 rounded-3xl shadow-xl border border-champagne-200">
-        <!-- Slides Frame with responsive height and complete containment -->
-        <div class="relative overflow-hidden rounded-2xl bg-cream/40 border border-champagne-100 h-[340px] sm:h-[480px] md:h-[540px] flex items-center justify-center group select-none">
-          <!-- Slides Wrapper -->
-          <div id="carousel-track" class="flex transition-transform duration-700 ease-out h-full w-full">
-            
-            <!-- Slide 1 -->
-            <div class="carousel-slide-item">
-              <img src="./assets/engagement/photo1.jpg" alt="Bride parents giving lagna patrika to groom brother and sister in law" class="lightbox-trigger" data-index="0" title="Click to view full photo">
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-slide-item">
-              <img src="./assets/engagement/photo2.jpg" alt="Groom brother and sister in law giving lagna patrika to bride parents" class="lightbox-trigger" data-index="1" title="Click to view full photo">
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="carousel-slide-item">
-              <img src="./assets/engagement/photo3.jpg" alt="Lakshmi Prasanna and Praveen smiling in wedding garlands" class="lightbox-trigger" data-index="2" title="Click to view full photo">
-            </div>
-
-            <!-- Slide 4 -->
-            <div class="carousel-slide-item">
-              <img src="./assets/engagement/photo4.jpg" alt="The couple happily presenting their engagement rings" class="lightbox-trigger" data-index="3" title="Click to view full photo">
-            </div>
-
-            <!-- Slide 5 -->
-            <div class="carousel-slide-item">
-              <img src="./assets/engagement/photo5.jpg" alt="A loving glance between the couple" class="lightbox-trigger" data-index="4" title="Click to view full photo">
-            </div>
-
-            <!-- Slide 6 -->
-            <div class="carousel-slide-item">
-              <img src="./assets/engagement/photo6.jpg" alt="Close-up of henna hands holding engagement rings" class="lightbox-trigger" data-index="5" title="Click to view full photo">
-            </div>
-
-            <!-- Slide 7 -->
-            <div class="carousel-slide-item">
-              <img src="./assets/engagement/photo7.jpg" alt="Full length portrait of Lakshmi Prasanna and Praveen" class="lightbox-trigger" data-index="6" title="Click to view full photo">
-            </div>
-
-            <!-- Slide 8 -->
-            <div class="carousel-slide-item">
-              <img src="./assets/engagement/photo8.jpg" alt="Group photo with bride family" class="lightbox-trigger" data-index="7" title="Click to view full photo">
-            </div>
-
-            <!-- Slide 9 -->
-            <div class="carousel-slide-item">
-              <img src="./assets/engagement/photo9.jpg" alt="Group photo with parents of bride and groom" class="lightbox-trigger" data-index="8" title="Click to view full photo">
-            </div>
-
-            <!-- Slide 10 -->
-            <div class="carousel-slide-item">
-              <img src="./assets/engagement/photo10.jpg" alt="Group photo with groom parents" class="lightbox-trigger" data-index="9" title="Click to view full photo">
-            </div>
-
-          </div>
-
-          <!-- Prev Button -->
-          <button id="carousel-prev" aria-label="Previous slide" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 sm:w-11 h-8 sm:h-11 rounded-full bg-white/90 hover:bg-white text-charcoal shadow-md border border-champagne-200 flex items-center justify-center transition-all hover:scale-105 active:scale-95 z-20 backdrop-blur-md">
-            <i class="fa-solid fa-chevron-left text-xs sm:text-sm text-champagne-700"></i>
-          </button>
-
-          <!-- Next Button -->
-          <button id="carousel-next" aria-label="Next slide" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 sm:w-11 h-8 sm:h-11 rounded-full bg-white/90 hover:bg-white text-charcoal shadow-md border border-champagne-200 flex items-center justify-center transition-all hover:scale-105 active:scale-95 z-20 backdrop-blur-md">
-            <i class="fa-solid fa-chevron-right text-xs sm:text-sm text-champagne-700"></i>
-          </button>
-        </div>
-
-        <!-- Dynamic Caption Below Photo -->
-        <div class="mt-4 text-center px-4 py-2 bg-cream/40 rounded-xl border border-champagne-100">
-          <h3 id="carousel-caption-title" class="font-serif text-lg sm:text-xl text-charcoal font-semibold">Exchange of Lagna Patrika</h3>
-          <p id="carousel-caption-sub" class="text-xs sm:text-sm text-charcoal/70 font-sans mt-0.5">Bride's parents presenting the auspicious Lagna Patrika to the groom's brother & sister-in-law</p>
-        </div>
-
-        <!-- Dot Indicators & Controls -->
-        <div class="flex items-center justify-between mt-3 px-2">
-          <div class="text-xs text-charcoal/60 font-serif italic">
-            <span id="mom-count-photo">Photo</span> <span id="carousel-current" class="font-semibold text-charcoal">1</span> <span id="mom-count-of">of</span> <span id="carousel-total">10</span>
-          </div>
-
-          <div class="flex items-center gap-1.5 sm:gap-2" id="carousel-dots">
-            <button class="carousel-dot w-8 h-2.5 rounded-full bg-champagne-500 transition-all duration-300" data-index="0" aria-label="Slide 1"></button>
-            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="1" aria-label="Slide 2"></button>
-            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="2" aria-label="Slide 3"></button>
-            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="3" aria-label="Slide 4"></button>
-            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="4" aria-label="Slide 5"></button>
-            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="5" aria-label="Slide 6"></button>
-            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="6" aria-label="Slide 7"></button>
-            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="7" aria-label="Slide 8"></button>
-            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="8" aria-label="Slide 9"></button>
-            <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-champagne-200 hover:bg-champagne-300 transition-all duration-300" data-index="9" aria-label="Slide 10"></button>
-          </div>
-
-          <button id="carousel-play-toggle" class="text-xs text-charcoal/60 hover:text-champagne-700 transition flex items-center gap-1.5" title="Toggle Autoplay">
-            <i id="carousel-play-icon" class="fa-solid fa-pause"></i> <span id="carousel-play-text" class="hidden sm:inline text-[11px] uppercase tracking-wider">Pause</span>
-          </button>
         </div>
       </div>
     </div>

@@ -182,84 +182,52 @@ function initPetals() {
 }
 
 // ----------------------------------------------------
-// 4. Background Ambient Melodic Chimes (Web Audio API)
+// 4. Background Wedding Melody Audio Player
 // ----------------------------------------------------
 function initMusicToggle() {
   const toggleBtn = document.getElementById("music-toggle");
   const musicIcon = document.getElementById("music-icon");
   const tooltip = document.getElementById("music-tooltip");
+  const audio = document.getElementById("wedding-bg-audio");
 
-  if (!toggleBtn) return;
+  if (!toggleBtn || !audio) return;
 
   let isPlaying = false;
-  let audioCtx = null;
-  let synthInterval = null;
 
-  // Auspicious Carnatic / Kalyani pentatonic notes (Mohanam / Kalyani scale)
-  const notes = [
-    261.63, // Sa (C4)
-    293.66, // Ri (D4)
-    329.63, // Ga (E4)
-    392.00, // Pa (G4)
-    440.00, // Dha (A4)
-    523.25, // Sa (C5)
-    587.33  // Ri (D5)
-  ];
-
-  function playChime() {
-    if (!audioCtx || !isPlaying) return;
-    try {
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-
-      const note = notes[Math.floor(Math.random() * notes.length)];
-      osc.type = "sine";
-      osc.frequency.setValueAtTime(note, audioCtx.currentTime);
-
-      gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.035, audioCtx.currentTime + 0.3);
-      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3.2);
-
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      osc.start();
-      osc.stop(audioCtx.currentTime + 3.3);
-    } catch (e) {
-      console.warn("Audio chime error:", e);
+  function updateTooltip(playing) {
+    if (!tooltip) return;
+    if (playing) {
+      const text = currentAppLang === "te" ? "సంగీతం ప్లే అవుతోంది" : "Melody Playing";
+      tooltip.innerHTML = `<span class="flex items-center gap-1.5"><i class="fa-solid fa-pause text-champagne-400"></i> ${text}</span>`;
+    } else {
+      const text = currentAppLang === "te" ? "సంగీతం వినండి" : "Tap for melody";
+      tooltip.innerHTML = `<span class="flex items-center gap-1.5"><i class="fa-solid fa-volume-high text-champagne-400"></i> ${text}</span>`;
     }
   }
 
   function startMusic() {
-    if (!audioCtx) {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      audioCtx = new AudioContext();
-    }
-    if (audioCtx.state === "suspended") {
-      audioCtx.resume();
-    }
-    isPlaying = true;
-    toggleBtn.classList.add("music-playing");
-    musicIcon.classList.remove("fa-music");
-    musicIcon.classList.add("fa-pause");
-    tooltip.innerHTML = '<span class="flex items-center gap-1.5"><i class="fa-solid fa-pause text-champagne-400"></i> Melody Playing</span>';
-
-    playChime();
-    synthInterval = setInterval(() => {
-      playChime();
-      if (Math.random() > 0.45) {
-        setTimeout(playChime, 450);
+    audio.play().then(() => {
+      isPlaying = true;
+      toggleBtn.classList.add("music-playing");
+      if (musicIcon) {
+        musicIcon.classList.remove("fa-music");
+        musicIcon.classList.add("fa-pause");
       }
-    }, 1900);
+      updateTooltip(true);
+    }).catch((err) => {
+      console.warn("Audio play prevented / blocked:", err);
+    });
   }
 
   function stopMusic() {
+    audio.pause();
     isPlaying = false;
     toggleBtn.classList.remove("music-playing");
-    musicIcon.classList.remove("fa-pause");
-    musicIcon.classList.add("fa-music");
-    tooltip.innerHTML = '<span class="flex items-center gap-1.5"><i class="fa-solid fa-volume-high text-champagne-400"></i> Tap for melody</span>';
-    if (synthInterval) clearInterval(synthInterval);
+    if (musicIcon) {
+      musicIcon.classList.remove("fa-pause");
+      musicIcon.classList.add("fa-music");
+    }
+    updateTooltip(false);
   }
 
   toggleBtn.addEventListener("click", () => {
@@ -268,6 +236,32 @@ function initMusicToggle() {
     } else {
       startMusic();
     }
+  });
+
+  audio.addEventListener("play", () => {
+    isPlaying = true;
+    toggleBtn.classList.add("music-playing");
+    if (musicIcon) {
+      musicIcon.classList.remove("fa-music");
+      musicIcon.classList.add("fa-pause");
+    }
+    updateTooltip(true);
+  });
+
+  audio.addEventListener("pause", () => {
+    if (!audio.seeking) {
+      isPlaying = false;
+      toggleBtn.classList.remove("music-playing");
+      if (musicIcon) {
+        musicIcon.classList.remove("fa-pause");
+        musicIcon.classList.add("fa-music");
+      }
+      updateTooltip(false);
+    }
+  });
+
+  window.addEventListener("wedding_lang_changed", () => {
+    updateTooltip(isPlaying);
   });
 }
 
@@ -665,6 +659,8 @@ function applyLanguage(lang) {
   try {
     localStorage.setItem("wedding_lang_pref", lang);
   } catch (e) {}
+
+  window.dispatchEvent(new CustomEvent("wedding_lang_changed", { detail: { lang } }));
 }
 
 function initLanguageToggle() {

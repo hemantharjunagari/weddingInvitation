@@ -76,6 +76,12 @@ html {
   font-style: normal !important;
 }
 
+.fa-brands, i.fa-brands {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
 /* Primary font stack for Telugu text elements specifically */
 .font-telugu,
 html.lang-te #hero-greeting,
@@ -88,6 +94,9 @@ html.lang-te #hero-date-badge,
 html.lang-te #hero-muhurtham-badge,
 html.lang-te #hero-venue-badge,
 html.lang-te #hero-cal-btn-text,
+html.lang-te #hero-whatsapp-btn-text,
+html.lang-te #ft-whatsapp-btn-text,
+html.lang-te #float-whatsapp-tip-text,
 html.lang-te #lbl-countdown-title,
 html.lang-te #lbl-days,
 html.lang-te #lbl-hours,

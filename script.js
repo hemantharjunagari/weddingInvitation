@@ -107,6 +107,57 @@ function initCalendarButton() {
 }
 
 // ----------------------------------------------------
+// 2b. Share on WhatsApp (Bilingual Message Generator)
+// ----------------------------------------------------
+function initWhatsAppShare() {
+  const shareButtons = [
+    document.getElementById("hero-whatsapp-share-btn"),
+    document.getElementById("float-whatsapp-share-btn"),
+    document.getElementById("footer-whatsapp-share-btn")
+  ];
+
+  function handleShare() {
+    const currentUrl = window.location.href;
+    let shareText = "";
+
+    if (currentAppLang === "te") {
+      shareText =
+        `💍 *వివాహ ఆహ్వాన పత్రిక* | *అర్జునగారి వారి పెండ్లిపిలుపు*\n\n` +
+        `శ్రీమతి అరుణ & శ్రీ అర్జునగారి మోహన్ (APSRTC) గార్ల జ్యేష్ఠ కుమార్తె:\n` +
+        `👰 *చి॥ల॥సౌ॥ ఎ. లక్ష్మీ ప్రసన్న* (ప్రసన్న లక్ష్మి) B.E.\n` +
+        `కళ్యాణం\n` +
+        `🤵 *చి॥ పి. ప్రవీణ్* B.Tech.\n\n` +
+        `📅 *సుముహూర్తం:* 20 నవంబర్ 2026, శుక్రవారం (ఉదయం 4:30 – 6:00 గంటల మధ్య)\n` +
+        `🎉 *రిసెప్షన్ & విందు:* 19 నవంబర్ 2026, గురువారం (సాయంత్రం 7:00 గంటల నుండి)\n` +
+        `📍 *కళ్యాణ వేదిక:* SRL కళ్యాణమండపము, తిరుపతి రోడ్, వెంకటగిరి\n\n` +
+        `మా వివాహ మహోత్సవానికి విచ్చేసి నూతన వధూవరులను ఆశీర్వదించగలరని కోరుతున్నాము.\n` +
+        `వివాహ ఆహ్వాన పత్రిక & లొకేషన్ మ్యాప్ చూడటానికి లింక్ ఓపెన్ చేయండి:\n${currentUrl}`;
+    } else {
+      shareText =
+        `💍 *Wedding Invitation* | *Arjunagari Family*\n\n` +
+        `Smt. Aruna & Sri A. Mohan cordially invite you with family & friends to celebrate the wedding ceremonies of their elder daughter:\n` +
+        `👰 *Chi.La.Sou. A. Lakshmi Prasanna* (Prasanna Lakshmi), B.E.\n` +
+        `weds\n` +
+        `🤵 *Chi. P. Praveen*, B.Tech.\n\n` +
+        `📅 *Sumuhurtham:* Friday, 20th November 2026 (4:30 AM – 6:00 AM)\n` +
+        `🎉 *Reception & Dinner:* Thursday, 19th November 2026 (7:00 PM onwards)\n` +
+        `📍 *Venue:* SRL Kalyana Mandapam, Tirupati Road, Venkatagiri\n\n` +
+        `Please join us to grace this auspicious occasion and bless the couple!\n` +
+        `View complete invitation, ceremonies & directions here:\n${currentUrl}`;
+    }
+
+    const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+    window.open(waUrl, "_blank");
+  }
+
+  shareButtons.forEach((btn) => {
+    if (btn) {
+      btn.addEventListener("click", handleShare);
+    }
+  });
+}
+
+// ----------------------------------------------------
 // 3. Falling Petals Animation
 // ----------------------------------------------------
 function initPetals() {
@@ -449,6 +500,9 @@ const I18N = {
     muhurthamBadge: "Muhurtham: 4:30 AM – 6:00 AM",
     venueBadge: "SRL Kalyana Mandapam, Venkatagiri",
     calBtn: "Add to Calendar",
+    whatsappBtn: "Share on WhatsApp",
+    ftWhatsappBtn: "Share Invitation on WhatsApp",
+    floatWhatsappTip: "Share invitation",
     countdownTitle: "Counting down every auspicious moment to the Sumuhurtham",
     lblDays: "Days",
     lblHours: "Hours",
@@ -528,6 +582,9 @@ const I18N = {
     muhurthamBadge: "సుముహూర్తం: ఉ॥ 4.30 - 6.00 గం॥ల మధ్య",
     venueBadge: "ఎస్.ఆర్.ఎల్. కళ్యాణమండపము, వెంకటగిరి",
     calBtn: "క్యాలెండర్‌లో జోడించండి",
+    whatsappBtn: "వాట్సాప్‌లో షేర్ చేయండి",
+    ftWhatsappBtn: "వాట్సాప్‌లో ఆహ్వానం షేర్ చేయండి",
+    floatWhatsappTip: "ఆహ్వానం షేర్ చేయండి",
     countdownTitle: "సుముహూర్త శుభ ఘడియల కోసం ఎదురుచూపులు",
     lblDays: "రోజులు",
     lblHours: "గంటలు",
@@ -629,6 +686,9 @@ function applyLanguage(lang) {
   setElText("hero-venue-badge", data.venueBadge);
 
   setElText("hero-cal-btn-text", data.calBtn);
+  setElText("hero-whatsapp-btn-text", data.whatsappBtn);
+  setElText("ft-whatsapp-btn-text", data.ftWhatsappBtn);
+  setElText("float-whatsapp-tip-text", data.floatWhatsappTip);
   setElText("lbl-countdown-title", data.countdownTitle);
 
   setElText("lbl-days", data.lblDays);
@@ -1094,6 +1154,7 @@ function initPhotoLightbox() {
 document.addEventListener("DOMContentLoaded", () => {
   initCountdown();
   initCalendarButton();
+  initWhatsAppShare();
   initPetals();
   initMusicToggle();
   initLanguageToggle();

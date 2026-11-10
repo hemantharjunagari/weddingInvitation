@@ -82,12 +82,15 @@
   <!-- Floating Falling Petals Canvas -->
   <canvas id="petals-canvas" class="fixed inset-0 pointer-events-none z-30"></canvas>
 
-  <!-- Background Music Floating Controller -->
-  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
-    <div id="music-tooltip" class="bg-charcoal/85 text-white text-xs px-3 py-1.5 rounded-full shadow-lg backdrop-blur-sm transition-opacity duration-300 opacity-90">
-      <span class="flex items-center gap-1.5"><i class="fa-solid fa-volume-high text-champagne-400"></i> Tap for melody</span>
-    </div>
-    <button id="music-toggle" aria-label="Toggle background music" class="w-12 h-12 rounded-full bg-white/90 border border-champagne-300 shadow-xl flex items-center justify-center text-charcoal hover:bg-blush-100 hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-md">
+  <!-- Floating Quick Actions (WhatsApp Share & Music Toggle) -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
+    <!-- WhatsApp Share Button (Top) -->
+    <button id="float-whatsapp-share-btn" aria-label="Share invitation on WhatsApp" class="w-12 h-12 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 backdrop-blur-md">
+      <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </button>
+
+    <!-- Background Music Toggle (Bottom) -->
+    <button id="music-toggle" aria-label="Toggle background music" class="w-12 h-12 rounded-full bg-white/90 border border-champagne-300 shadow-xl flex items-center justify-center text-charcoal hover:bg-blush-100 hover:scale-110 active:scale-95 transition-all duration-300 backdrop-blur-md">
       <i id="music-icon" class="fa-solid fa-music text-champagne-500 text-lg"></i>
     </button>
   </div>
@@ -233,10 +236,13 @@
         </div>
       </div>
 
-      <!-- Action Button -->
-      <div class="flex items-center justify-center mt-2 w-full sm:w-auto">
-        <button id="add-to-cal-btn" class="w-full sm:w-auto px-9 py-3.5 rounded-full bg-champagne-500 hover:bg-champagne-600 text-white font-sans text-xs uppercase tracking-widest font-semibold shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2.5">
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mt-3 w-full sm:w-auto">
+        <button id="add-to-cal-btn" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-champagne-500 hover:bg-champagne-600 text-white font-sans text-xs uppercase tracking-widest font-semibold shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2.5">
           <i class="fa-regular fa-calendar-plus text-sm"></i> <span id="hero-cal-btn-text">Add to Calendar</span>
+        </button>
+        <button id="hero-whatsapp-share-btn" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-sans text-xs uppercase tracking-widest font-semibold shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2.5">
+          <i class="fa-brands fa-whatsapp text-base"></i> <span id="hero-whatsapp-btn-text">Share on WhatsApp</span>
         </button>
       </div>
 
@@ -723,6 +729,11 @@
       </p>
       <div id="ft-date" class="text-xs font-sans tracking-widest uppercase text-charcoal/60 pt-4">
         19th & 20th November 2026 • Venkatagiri, Andhra Pradesh
+      </div>
+      <div class="pt-2 pb-1">
+        <button id="footer-whatsapp-share-btn" class="px-7 py-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-sans text-xs uppercase tracking-wider font-semibold shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all inline-flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-base"></i> <span id="ft-whatsapp-btn-text">Share Invitation on WhatsApp</span>
+        </button>
       </div>
       <div id="ft-compliments" class="text-xs text-charcoal/70 font-serif">
         With Best Compliments From: <strong>Near & Dear</strong>

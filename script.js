@@ -111,7 +111,6 @@ function initCalendarButton() {
 // ----------------------------------------------------
 function initWhatsAppShare() {
   const shareButtons = [
-    document.getElementById("hero-whatsapp-share-btn"),
     document.getElementById("float-whatsapp-share-btn"),
     document.getElementById("footer-whatsapp-share-btn")
   ];
@@ -686,7 +685,6 @@ function applyLanguage(lang) {
   setElText("hero-venue-badge", data.venueBadge);
 
   setElText("hero-cal-btn-text", data.calBtn);
-  setElText("hero-whatsapp-btn-text", data.whatsappBtn);
   setElText("ft-whatsapp-btn-text", data.ftWhatsappBtn);
   setElText("float-whatsapp-tip-text", data.floatWhatsappTip);
   setElText("lbl-countdown-title", data.countdownTitle);
